@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ModuleSample.Pages.PagePersistenceViewSample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Name="ctl">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <!--Can Save as-->
+    <CheckBox Grid.Row="0" Grid.Column="1"
+              Content="Checking this will enable the 'Save As...' in the task's context menu."
+              IsChecked="{Binding CanSaveAs, ElementName=ctl}"
+              Margin="4,5"/>
+
+    <!--Message-->
+    <TextBlock Grid.Row="1" Grid.Column="0"
+               Text="This text will be persisted:"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Foreground="LightGray" Margin="4,5"/>
+
+    <TextBox Grid.Row="1" Grid.Column="1"
+             Text="{Binding Message, ElementName=ctl, UpdateSourceTrigger=PropertyChanged}"
+             VerticalAlignment="Center" Margin="4,5"/>
+    
+  </Grid>
+</UserControl>

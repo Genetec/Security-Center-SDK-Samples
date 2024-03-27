@@ -1,0 +1,23 @@
+﻿<Window x:Class="CredentialFormatsSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CredentialFormatsSample"
+        xmlns:views="clr-namespace:CredentialFormatsSample.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="420" Width="680">
+    <Grid>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="Create with Fields">
+                <views:FieldCreationView />
+            </TabItem>
+            <TabItem Header="Search with Raw Data">
+                <views:SearchRawData />
+            </TabItem>
+            <TabItem Header="Copy with Raw Data">
+                <views:CopyRawData/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

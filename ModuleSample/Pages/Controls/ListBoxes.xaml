@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="ModuleSample.Pages.Controls.ListBoxes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Tag="ListBoxes"
+             x:Name="ctl">
+
+  <DockPanel>
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="20">
+      <RepeatButton Margin="4" Delay="100" Content="Add 100 items" Click="OnHorizontalAddRandom"/>
+      <RepeatButton Margin="4" Delay="100" Content="Remove" Click="OnRemoveRandom"/>
+    </StackPanel>
+
+    <TabControl>
+
+      <TabItem Header="Virtualized listbox">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <DockPanel Grid.Row="0">
+            <TextBlock Text="Virtualizing ListBox" DockPanel.Dock="Top"/>
+            <ListBox Margin="4"
+               VerticalAlignment="Top" Height="100"
+               ItemsSource="{Binding Path=RandomItems, ElementName=ctl}" >
+              <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <VirtualizingStackPanel Orientation="Horizontal" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+              </ListBox.ItemsPanel>
+            </ListBox>
+          </DockPanel>
+
+          <DockPanel Grid.Row="1">
+            <TextBlock Text="Virtualizing unskinned ListBox" DockPanel.Dock="Top"/>
+            <ListBox Margin="4"
+               Style="{x:Null}"
+               VerticalAlignment="Top" Height="100"
+               ItemsSource="{Binding Path=RandomItems, ElementName=ctl}" >
+              <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <VirtualizingStackPanel Orientation="Horizontal" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+              </ListBox.ItemsPanel>
+            </ListBox>
+          </DockPanel>
+
+          <DockPanel Grid.Row="2">
+            <TextBlock Text="Single DragNDrop ListBox" DockPanel.Dock="Top"/>
+            <ListBox x:Name="m_dragNDropListBox" 
+               Margin="4"
+               VerticalAlignment="Top" Height="100"
+               SelectionMode="Extended"
+               ItemsSource="{Binding Path=RandomItems, ElementName=ctl}" >
+              <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <VirtualizingStackPanel Orientation="Vertical" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+              </ListBox.ItemsPanel>
+            </ListBox>
+          </DockPanel>
+
+        </Grid>
+      </TabItem>
+    </TabControl>
+  </DockPanel>
+
+</UserControl>

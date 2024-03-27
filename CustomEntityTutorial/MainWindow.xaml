@@ -1,0 +1,99 @@
+﻿<Window x:Class="CustomEntityTutorial.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="8" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold" Content="How To Create A Custom Entity"/>
+
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold">Step 1:</Label>
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">Create a custom entity type descriptor.</Label>
+        <Button Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10" Click="CETD_Click">CETD</Button>
+        <Label Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Right" VerticalAlignment="Center" Padding="5,0,0,0">Important:</Label>
+        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- You must be an admin to create a type descriptor.</Label>
+        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- You must set the custom entity type capabilities to IsVisible to see it in CT or SD.</Label>
+        <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- You must explicitly update the type descriptor when you change it.</Label>
+        <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- You must specify which SDK privilege is needed for the custom entity to be able to</Label>
+        <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15,0,0,0">add, modify, update or delete.If no privilege is specified, the user must be admin.</Label>
+
+        <Label Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold">Step 2:</Label>
+        <Label Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">Create and login as a non admin user.</Label>
+        <Button Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left" Margin="10" Click="USER_Click">USER</Button>
+        <Label Grid.Row="8" Grid.Column="0"  HorizontalAlignment="Right" VerticalAlignment="Center" Padding="5,0,0,0">Important:</Label>
+        <Label Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- You must grant the user the privileges specified in the custom entity type descriptor</Label>
+        <Label Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15,0,0,0">for the user to be able to create, add, modify and delete the custom entity.</Label>
+
+        <Label Grid.Row="10" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold">Step 3:</Label>
+        <Label Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">Create a custom entity.</Label>
+        <Button Grid.Row="10" Grid.Column="0" HorizontalAlignment="Left" Margin="10" Click="CREATE_Click">CREATE</Button>
+        <Label Grid.Row="11" Grid.Column="0"  HorizontalAlignment="Right" VerticalAlignment="Center" Padding="5,0,0,0">Important:</Label>
+        <Label Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- You must grant the user the privileges specified in the custom entity type descriptor</Label>
+        <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15,0,0,0">for the user to be able to create, add, modify and delete the custom entity.</Label>
+        <Label Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- To create a custom entity, the user must have the add, view, and modify privileges</Label>
+
+        <Label Grid.Row="14" Grid.ColumnSpan="8" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Content="Things You Can Do"/>
+
+        <Label Grid.Row="15" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold">Entity:</Label>
+        <Label Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">Create, view, modify, and delete custom entities</Label>
+        <Button Grid.Row="19" HorizontalAlignment="right" Margin="0,11,58,9" Click="CREATE_Click" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="73">Create Entity</Button>
+        <Button Grid.Row="19" Grid.Column="1" HorizontalAlignment="left" Margin="99,11,0,9" Click="VIEW_Click" VerticalAlignment="Center" Grid.ColumnSpan="2">View Entity</Button>
+        <Button Grid.Row="19" Grid.Column="2" HorizontalAlignment="right" Margin="0,11,72,9" Click="MODIFY_Click" VerticalAlignment="Center" Grid.ColumnSpan="2">Modify Entity</Button>
+        <Button Grid.Row="19" Grid.Column="3" HorizontalAlignment="Left" Margin="86,11,0,9" Click="DELETE_Click" Grid.ColumnSpan="2" VerticalAlignment="Center">Delete Entity</Button>
+
+        <Label Grid.Row="20" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold">Privileges:</Label>
+        <Label Grid.Row="20" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Width="443">Remove/Add the ADD, VIEW, MODIFY and DELETE privileges</Label>
+        <Label Grid.Row="21" Grid.Column="0"  HorizontalAlignment="Right" VerticalAlignment="Center" Padding="5,0,0,0">Important:</Label>
+        <Label Grid.Row="21" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- To create a custom entity you must have the add, view, and modify privileges.</Label>
+        <Label Grid.Row="22" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- To delete a custom entity, the user must have the modify and delete privileges.</Label>
+        <Label Grid.Row="23" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0">- To get a custom entity, the user must have the view privilege.</Label>
+        <Label Grid.Row="24" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Remove Privileges:</Label>
+        <Button Grid.Row="24" Grid.Column="2" HorizontalAlignment="right" Margin="0,10,89,10" Click="RemoveADD_Click">ADD</Button>
+        <Button Grid.Row="24" Grid.Column="2" HorizontalAlignment="left" Margin="50,10,0,10" Click="RemoveVIEW_Click">VIEW</Button>
+        <Button Grid.Row="24" Grid.Column="2" HorizontalAlignment="right" Margin="0,10,88,10" Click="RemoveMODIFY_Click" Grid.ColumnSpan="2">MODIFY</Button>
+        <Button Grid.Row="24" Grid.Column="3" HorizontalAlignment="Left" Margin="50,10,0,10" Click="RemoveDELETE_Click">DELETE</Button>
+        <Label Grid.Row="25" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Add Privileges:</Label>
+        <Button Grid.Row="25" Grid.Column="2" HorizontalAlignment="right" Margin="0,10,89,10" Click="AddADD_Click">ADD</Button>
+        <Button Grid.Row="25" Grid.Column="2" HorizontalAlignment="left" Margin="50,10,0,10" Click="AddVIEW_Click">VIEW</Button>
+        <Button Grid.Row="25" Grid.Column="2" HorizontalAlignment="right" Margin="0,10,88,10" Click="AddMODIFY_Click" Grid.ColumnSpan="2">MODIFY</Button>
+        <Button Grid.Row="25" Grid.Column="3" HorizontalAlignment="Left" Margin="50,10,0,10" Click="AddDELETE_Click">DELETE</Button>
+    </Grid>
+</Window>

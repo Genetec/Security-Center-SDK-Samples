@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="ModuleSample.Pages.Controls.Buttons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Tag="Buttons">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+
+    <!-- buttons -->
+    <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+      <Button Content="Normal button"/>
+      <Button Content="Colored button" Background="Orange"/>
+      <Button Content="Default button" IsDefault="True"/>
+      <Button Content="Disabled button" IsEnabled="False"/>
+      <Button Content="Flat button" Style="{Styles {x:Static ButtonStyles.Flat}}"/>
+      <Button Content="Legacy flat button" Style="{Styles {x:Static ButtonStyles.LegacyFlat}}"/>
+      <Button Content="Frameless button" Style="{Styles {x:Static ButtonStyles.Frameless}}"/>
+      <Button Content="Round button" Style="{Styles {x:Static ButtonStyles.Round}}"/>
+    </StackPanel>
+
+    <!-- toggle buttons -->
+    <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+      <ToggleButton Content="Toggle button OFF"  IsChecked="False" Style="{Styles {x:Static ToggleButtonStyles.Default}}"/>
+      <ToggleButton Content="Toggle button ON"  IsChecked="True" Style="{Styles {x:Static ToggleButtonStyles.Default}}"/>
+      <ToggleButton Content="Toggle button OFF disabled" Style="{Styles {x:Static ToggleButtonStyles.Default}}" IsChecked="False" IsEnabled="False"/>
+      <ToggleButton Content="Toggle button ON disabled" Style="{Styles {x:Static ToggleButtonStyles.Default}}" IsChecked="True" IsEnabled="False"/>
+      <ToggleButton Content="Flat toggle button" Style="{Styles {x:Static ToggleButtonStyles.Flat}}" IsChecked="True"/>
+      <ToggleButton Content="Round toggle button" Style="{Styles {x:Static ToggleButtonStyles.Round}}" IsChecked="True"/>
+    </StackPanel>
+
+    <!-- check boxes -->
+    <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+      <CheckBox Content="Unchecked" IsChecked="False"/>
+      <CheckBox Content="Checked" IsChecked="True"/>
+      <CheckBox Content="Partial" IsChecked="{x:Null}"/>
+      <CheckBox Content="Disabled unchecked" IsChecked="False" IsEnabled="False"/>
+      <CheckBox Content="Disabled checked" IsChecked="True" IsEnabled="False"/>
+    </StackPanel>
+
+    <!-- radio buttons -->
+    <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+      <RadioButton Content="Unchecked" GroupName="Unchecked" IsChecked="False"/>
+      <RadioButton Content="Checked" GroupName="Checked" IsChecked="True"/>
+      <RadioButton Content="Partial" GroupName="Partial" IsChecked="{x:Null}"/>
+      <RadioButton Content="Disabled unchecked" GroupName="Disabled unchecked" IsChecked="False" IsEnabled="False"/>
+      <RadioButton Content="Disabled checked"  GroupName="Disabled checked" IsChecked="True" IsEnabled="False"/>
+      <RadioButton Content="Disabled partial" GroupName="Disabled checked partial" IsChecked="{x:Null}" IsEnabled="False"/>
+      <RadioButton Content="Tool" GroupName="Tool" IsChecked="False"/>
+    </StackPanel>
+
+    <!-- buttons -->
+
+    <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Button Name="m_leftButton" Content="Left" Style="{Styles {x:Static ButtonStyles.LeftSegment}}" Click="OnLeftButtonClicked" IsEnabled="False"/>
+        <Button Name="m_middleButton" Content="Middle" Style="{Styles {x:Static ButtonStyles.MiddleSegment}}" Click="OnMiddleButtonClicked"/>
+        <Button Name="m_rightButton" Content="Right" Style="{Styles {x:Static ButtonStyles.RightSegment}}" Click="OnRightButtonClicked"/>
+        <TextBlock Text="Segment buttons" Margin="4,0,0,0"/>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <ToggleButton Content="Left" Style="{Styles {x:Static ToggleButtonStyles.LeftSegment}}"/>
+        <ToggleButton Content="Middle" Style="{Styles {x:Static ToggleButtonStyles.MiddleSegment}}"/>
+        <ToggleButton Content="Right" Style="{Styles {x:Static ToggleButtonStyles.RightSegment}}" IsEnabled="False"/>
+        <TextBlock Text="Toggle buttons" Margin="4,0,0,0"/>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <RadioButton Content="Left" Style="{Styles {x:Static RadioButtonStyles.LeftSegment}}"/>
+        <RadioButton Content="Middle" Style="{Styles {x:Static RadioButtonStyles.MiddleSegment}}"/>
+        <RadioButton Content="Right" Style="{Styles {x:Static RadioButtonStyles.RightSegment}}"/>
+        <TextBlock Text="Radio buttons" Margin="4,0,0,0"/>
+      </StackPanel>
+
+    </StackPanel>
+
+    <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+      <StackPanel Orientation="Vertical">
+        <Button Name="m_upButton" Content="^" Width="36" Style="{Styles {x:Static ButtonStyles.TopSegment}}" IsEnabled="False" Click="OnUpButtonClicked"/>
+        <Button Name="m_downButton" Content="v" Width="36" Style="{Styles {x:Static ButtonStyles.BottomSegment}}" Click="OnDownButtonClicked"/>
+      </StackPanel>
+
+      <Button Style="{Styles {x:Static ButtonStyles.Close}}"
+              Width="30" Height="30"
+              VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
+
+      <StackPanel Orientation="Vertical">
+        <ToggleButton Content="Top" Width="36" Style="{Styles {x:Static ToggleButtonStyles.TopSegment}}"/>
+        <ToggleButton Content="Right" Width="36" Style="{Styles {x:Static ToggleButtonStyles.BottomSegment}}"/>
+      </StackPanel>
+
+      <StackPanel Orientation="Vertical">
+        <RadioButton Content="Top" Width="36" Style="{Styles {x:Static RadioButtonStyles.TopSegment}}"/>
+        <RadioButton Content="Right" Width="36" Style="{Styles {x:Static RadioButtonStyles.BottomSegment}}"/>
+      </StackPanel>
+
+    </StackPanel>
+
+    <StackPanel Grid.Row="3">
+      <StackPanel.Resources>
+        <Style x:Key="{x:Type Button}" TargetType="Button" BasedOn="{Styles {x:Static ButtonStyles.RightSegment}}">
+          <Setter Property="Background" Value="Red"/>
+        </Style>
+      </StackPanel.Resources>
+
+      <Button Content="A"/>
+      <Button Content="B"/>
+      <Button Content="C"/>
+    </StackPanel>
+
+  </Grid>
+
+</UserControl>

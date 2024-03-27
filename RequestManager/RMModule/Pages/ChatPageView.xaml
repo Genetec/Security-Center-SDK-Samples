@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="RMModule.Pages.ChatPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Name="ctl">
+  <Grid Margin="20">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Grid.Column="0" Text="Received text" Foreground="LightGray" Margin="4,5"/>
+    <RichTextBox Grid.Row="0" Name="textboxRec" Grid.Column="1" HorizontalAlignment="Left" Height="300" Width="400" >
+      <FlowDocument>
+        <Paragraph>
+          <Run Text="{Binding ReceivedText, ElementName=ctl, UpdateSourceTrigger=PropertyChanged}"/>
+        </Paragraph>
+      </FlowDocument>
+    </RichTextBox>
+    <Grid Grid.Row="0" Grid.Column="2" Margin="100,0,0,0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="This Request Manager Module sample is meant to chat with the Request Manager Application (RMApplication)" Foreground="LightGray" Margin="4,5" FontWeight="Bold"/>
+      <TextBlock Grid.Row="1" Text="It demonstrates these features : " Foreground="LightGray" Margin="4,5" FontWeight="Bold"/>
+      <TextBlock Grid.Row="2" Text="  - The ability to communicate with a standalone SDK application through the RequestManager." Foreground="LightGray" Margin="4,5"/>
+      <TextBlock Grid.Row="3" Text="  - A service is used to send and receive the chat messages." Foreground="LightGray" Margin="4,5"/>
+      <TextBlock Grid.Row="4" Text="  - A notification in the top right notification tray indicates the number of unread messages." Foreground="LightGray" Margin="4,5"/>
+      <TextBlock Grid.Row="5" Text="  - A timeline provider will mark every opened camera's timeline with a notification when a message is received. " Foreground="LightGray" Margin="4,5"/>
+      <TextBlock Grid.Row="6" Text="  - A custom page (current page)." Foreground="LightGray" Margin="4,5"/>
+      <TextBlock Grid.Row="7" Text="  - The ability to persist data on the page. To do so, right click the tab and click Save As." Foreground="LightGray" Margin="4,5"/>
+      <TextBlock Grid.Row="8" Text="  - Options in the Options menu. They can be accessed under the Chat tab." Foreground="LightGray" Margin="4,5"/>
+    </Grid>
+    <Button x:Name="buttonSend" Grid.Row="1" Grid.Column="0" Content="Send" Margin="4,5" Click="OnButtonSendClick"/>
+    <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Width="400" Text="{Binding MessageToSend, ElementName=ctl, UpdateSourceTrigger=PropertyChanged}" Margin="0,2" KeyDown="OnTextBoxKeyDown"/>
+
+
+  </Grid>
+</UserControl>

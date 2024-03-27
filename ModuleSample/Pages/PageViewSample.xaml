@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="ModuleSample.Pages.PageViewSample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Name="ctl">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <!--Current monitor-->
+    <TextBlock Grid.Row="1" Grid.Column="0"
+               Text="Currently on monitor:"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Foreground="LightGray" Margin="4,5"/>
+
+    <StackPanel Grid.Row="1" Grid.Column="1"
+                Orientation="Horizontal" Margin="4,5">
+
+      <TextBlock Text="{Binding CurrentMonitor, ElementName=ctl}"
+                 VerticalAlignment="Center" Foreground="White" />
+
+      <Button Content="Refresh"
+              Click="OnButtonRefreshMonitorClicked"
+              VerticalAlignment="Center" Margin="2,0"/>
+    </StackPanel>
+   
+    <Button Grid.Row="4" Grid.Column="1"
+            Content="Test" MaxWidth="75" Click="OnButtonClick"/>
+
+    <Button Grid.Row="5" Grid.Column="1"
+            Content="Drag" MaxWidth="75" PreviewMouseLeftButtonDown="OnButtonPreviewMouseLeftButtonDown"/> 
+    
+    <TextBlock Grid.Row="6" Grid.Column="0"
+               Text="Page name:"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Foreground="LightGray" Margin="4,5"/>
+
+    <TextBox Grid.Row="6" Grid.Column="1" Margin="4" 
+             Text="{Binding Path=Owner.Name, ElementName=ctl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    
+    <ContentPresenter Name="m_host" Grid.Row="7" Grid.ColumnSpan="2" Visibility="Collapsed"
+                      MinHeight="300" MinWidth="300"/>
+    
+  </Grid>
+</UserControl>

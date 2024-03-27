@@ -1,0 +1,59 @@
+﻿<Window x:Class="RaiseFaceDetectedEvent.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:RaiseFaceDetectedEvent.ViewModels"
+        mc:Ignorable="d"
+        Title="Raise Face Detected Event" WindowStartupLocation="CenterScreen" Height="512.5" Width="537">
+
+  <Window.DataContext>
+    <viewModels:CustomEventMessageViewModel Age="23" ConfidenceRatio="0.954" PicturePath="C:/face.png" />
+  </Window.DataContext>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="40"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="20" />
+    </Grid.ColumnDefinitions>
+
+    <Button x:Name="ButtonLogin" Grid.Row="0" Grid.Column="1" Margin="0,0,100,0" Content="Logon" Command="{Binding LogonCommand}" IsEnabled="{Binding IsLoggedOff}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
+    <Button x:Name="ButtonLogout" Grid.Row="0" Grid.Column="1" Content="Logoff" Command="{Binding LogoffCommand}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
+
+    <Label x:Name="LabelCamera" Grid.Row="2" Grid.Column="0" Content="Cameras" HorizontalContentAlignment="Right" Margin="0,20,0,0"/>
+    <ComboBox x:Name="ComboBoxCameras" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Cameras}" SelectedItem="{Binding SelectedCamera}" IsEnabled="{Binding IsLoggedOn}" Margin="0,20,0,0"/>
+
+    <Label x:Name="LabelFaceId" Grid.Row="3" Grid.Column="0" Content="FaceId" HorizontalContentAlignment="Right" />
+    <TextBox x:Name="TextBoxFaceId" Grid.Row="3" Grid.Column="1" Text="{Binding FaceId}" IsEnabled="False" TextWrapping="Wrap" />
+
+    <Label x:Name="LabelAge" Grid.Row="4" Grid.Column="0" HorizontalContentAlignment="Right" Content="Age" />
+    <TextBox x:Name="TextBoxAge" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Age}" Width="50" HorizontalAlignment="Left" />
+
+    <Label x:Name="LabelConfidenceRatio" Grid.Row="5" Grid.Column="0" Content="Confidence Ratio" HorizontalContentAlignment="Right" />
+    <TextBox Text="{Binding ConfidenceRatio}" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Width="50" HorizontalAlignment="Left"/>
+
+    <Label x:Name="LabelImage" Grid.Row="6" Grid.Column="0" Content="Image" HorizontalContentAlignment="Right" />
+    <TextBox x:Name="TextBoxPath" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Text="{Binding PicturePath, UpdateSourceTrigger=PropertyChanged}"/>
+    <Image x:Name="ImageFace" Grid.Row="7" Grid.Column="1" Source="{Binding Image}" Width="75" Height="75" HorizontalAlignment="Left"/>
+
+    <Button x:Name="ButtonRaiseVideoAnalyticsFaceDetectedEvent" Grid.Row="8" Grid.Column="1" Command="{Binding RaiseFaceDetectedEventCommand}" IsEnabled="{Binding IsLoggedOn}" Content="Raise Face Detected Event" Margin="0,0,0,20"/>
+    <Button x:Name="ButtonRaiseVideoAnalyticsObjectInViewEvent" Grid.Row="9" Grid.Column="1" Command="{Binding RaiseObjectDetectedEventCommand}" IsEnabled="{Binding IsLoggedOn}" Content="Raise Object In Field Event"/>
+
+  </Grid>
+</Window>
+
+
+

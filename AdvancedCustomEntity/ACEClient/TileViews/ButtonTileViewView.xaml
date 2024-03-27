@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="ACEClient.TileViews.ButtonTileViewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ACEClient.TileViews"
+             mc:Ignorable="d" Height="41.068" Width="166.776" HorizontalAlignment="Right" VerticalAlignment="Top">
+    <Grid>
+        <Button Content="Custom Event Button" HorizontalAlignment="Center" Height="27" VerticalAlignment="Center" Width="156" Background="{x:Null}" Margin="6,5,0,0" Click="OnButtonClick"/>
+    </Grid>
+</UserControl>

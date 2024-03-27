@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{350A5A07-C77A-47CA-873B-51D4F90FDC10}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModuleSample</RootNamespace>
+    <AssemblyName>ModuleSample</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    
+    
+    
+    
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Genetec.Sdk">
+      <Private>False</Private>
+      <HintPath>$(GSC_SDK)\Genetec.Sdk.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Genetec.Sdk.Controls">
+      <Private>False</Private>
+      <HintPath>$(GSC_SDK)\Genetec.Sdk.Controls.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Genetec.Sdk.Workspace">
+      <Private>False</Private>
+      <HintPath>$(GSC_SDK)\Genetec.Sdk.Workspace.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\MvvmLightLibs.5.4.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ClockWidget\ClockWidget.cs" />
+    <Compile Include="Components\ClockWidget\ClockWidgetBuilder.cs" />
+    <Compile Include="Components\ClockWidget\ClockWidgetView.xaml.cs">
+      <DependentUpon>ClockWidgetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ClockWidget\CustomWidgetSettings.xaml.cs">
+      <DependentUpon>CustomWidgetSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomWidget\CustomWidget.cs" />
+    <Compile Include="Components\CustomWidget\CustomWidgetBuilder.cs" />
+    <Compile Include="Components\CustomWidget\CustomWidgetOptions.cs" />
+    <Compile Include="Components\CustomWidget\CustomWidgetOptionsView.xaml.cs">
+      <DependentUpon>CustomWidgetOptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomWidget\CustomWidgetView.xaml.cs">
+      <DependentUpon>CustomWidgetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\FaceContentBuilder.cs" />
+    <Compile Include="Components\OverlayTileView.cs" />
+    <Compile Include="Components\OverlayTileViewerView.xaml.cs">
+      <DependentUpon>OverlayTileViewerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\EnumMatchToVisibilityConverter.cs" />
+    <Compile Include="Maps\MapObjects\Accidents\AccidentMapObject.cs" />
+    <Compile Include="Maps\MapObjects\Accidents\AccidentMapObjectProvider.cs" />
+    <Compile Include="Maps\MapObjects\Accidents\AccidentMapObjectView.xaml.cs">
+      <DependentUpon>AccidentMapObjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\Panels\Alarms\AckAlarmsMapPanel.cs" />
+    <Compile Include="Maps\Panels\Alarms\AckAlarmsMapPanelBuilder.cs" />
+    <Compile Include="Maps\Panels\Incidents\AddIncidentPopup.xaml.cs">
+      <DependentUpon>AddIncidentPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\Panels\Incidents\IncidentMapPanelView.xaml.cs">
+      <DependentUpon>IncidentMapPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\Panels\Incidents\IncidentsMapPanel.cs" />
+    <Compile Include="Maps\Panels\Incidents\IncidentsMapPanelBuilder.cs" />
+    <Compile Include="Pages\Configuration\CustomConfigPage.cs" />
+    <Compile Include="Pages\Configuration\CustomConfigPageView.xaml.cs">
+      <DependentUpon>CustomConfigPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContextualAction\AddFaceContextualAction.cs" />
+    <Compile Include="Events\CustomEventExtender.cs" />
+    <Compile Include="ContextualAction\FacesContextualActionGroup.cs" />
+    <Compile Include="ContextualAction\LocateMeContextualAction.cs" />
+    <Compile Include="Controls\ControlPage.cs" />
+    <Compile Include="Controls\EntityTree.xaml.cs">
+      <DependentUpon>EntityTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Timeline\DataProvider\ITimelineDataProvider.cs" />
+    <Compile Include="Controls\Timeline\DataProvider\SdkTimelineDataProvider.cs" />
+    <Compile Include="Controls\Timeline\Events\ITimelineEvent.cs" />
+    <Compile Include="Controls\Timeline\Events\Motion.cs" />
+    <Compile Include="Controls\Timeline\Events\Sequence.cs" />
+    <Compile Include="Controls\Timeline\Layers\EventsLayer.cs" />
+    <Compile Include="Controls\Timeline\Layers\TicksLayer.cs" />
+    <Compile Include="Controls\Timeline\Layers\VisualsLayer.cs" />
+    <Compile Include="Controls\Timeline\Timeline.xaml.cs">
+      <DependentUpon>Timeline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleTest.cs" />
+    <Compile Include="Notifications\ConfigToolStartTray.cs" />
+    <Compile Include="Notifications\ConfigToolStartTrayView.xaml.cs">
+      <DependentUpon>ConfigToolStartTrayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Configuration\AnalyticConfigPage.cs" />
+    <Compile Include="Pages\Configuration\AnalyticConfigPage2.cs" />
+    <Compile Include="Pages\Configuration\AnalyticConfigPage2View.xaml.cs">
+      <DependentUpon>AnalyticConfigPage2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Configuration\AnalyticConfigPageView.xaml.cs">
+      <DependentUpon>AnalyticConfigPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\All.xaml.cs">
+      <DependentUpon>All.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Buttons.xaml.cs">
+      <DependentUpon>Buttons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Charts.xaml.cs">
+      <DependentUpon>Charts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\DatePickers.xaml.cs">
+      <DependentUpon>DatePickers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Expanders.xaml.cs">
+      <DependentUpon>Expanders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Groups.xaml.cs">
+      <DependentUpon>Groups.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Inputs.xaml.cs">
+      <DependentUpon>Inputs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Labels.xaml.cs">
+      <DependentUpon>Labels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\ListBoxes.xaml.cs">
+      <DependentUpon>ListBoxes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\ScrollViewers.xaml.cs">
+      <DependentUpon>ScrollViewers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Controls\Tabs.xaml.cs">
+      <DependentUpon>Tabs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SdkControlsPage.cs" />
+    <Compile Include="Pages\SdkControlsPageView.xaml.cs">
+      <DependentUpon>SdkControlsPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Tasks\NotepadTask.cs" />
+    <Compile Include="Pages\PagePersistenceSample.cs" />
+    <Compile Include="Pages\PagePersistenceViewSample.xaml.cs">
+      <DependentUpon>PagePersistenceViewSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageSdkSample.cs" />
+    <Compile Include="Pages\PageSdkViewSample.xaml.cs">
+      <DependentUpon>PageSdkViewSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebPageSample.cs" />
+    <Compile Include="Pages\WebPageViewSample.xaml.cs">
+      <DependentUpon>WebPageViewSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\PageSample.cs" />
+    <Compile Include="Pages\PageViewSample.xaml.cs">
+      <DependentUpon>PageViewSample.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Components\ClockWidget\ClockWidgetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\ClockWidget\CustomWidgetSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\CustomWidget\CustomWidgetOptionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\CustomWidget\CustomWidgetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\OverlayTileViewerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Maps\MapObjects\Accidents\AccidentMapObjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Maps\Panels\Incidents\AddIncidentPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Maps\Panels\Incidents\IncidentMapPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Configuration\CustomConfigPageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EntityTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Timeline\Timeline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Notifications\ConfigToolStartTrayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Configuration\AnalyticConfigPage2View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Configuration\AnalyticConfigPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\All.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\Charts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\DatePickers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\Expanders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\Groups.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\Inputs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\Labels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\ListBoxes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\ScrollViewers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\Tabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagePersistenceViewSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageSdkViewSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageViewSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SdkControlsPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WebPageViewSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Category.png" />
+    <Resource Include="Resources\Task.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Task - small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AlarmClock.png" />
+    <Resource Include="Resources\incidents.png" />
+    <Resource Include="Resources\incident.png" />
+    <Resource Include="Resources\acknowledgealarms.png" />
+    <Resource Include="Resources\Faces.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Genetec.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Controls\Timeline\Resources\Minus.png" />
+    <Resource Include="Controls\Timeline\Resources\Pan Left.png" />
+    <Resource Include="Controls\Timeline\Resources\Pan right.png" />
+    <Resource Include="Controls\Timeline\Resources\Plus.png" />
+    <Content Include="..\Readme_SecurityDeskSDK.txt">
+      <Link>Readme_SecurityDeskSDK.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\BackgroundClock.png" />
+    <Content Include="ModuleSample.privileges.xml" />
+    <Resource Include="Resources\Notepad.png" />
+    <Resource Include="Resources\ConfigToolTray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Certificates\ModuleSample.Components.ClockWidget.ClockWidgetBuilder.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Components.CustomWidget.CustomWidgetBuilder.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Components.FaceContentBuilder.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Components.OverlayTileViewBuilder.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Pages.PagePersistenceSample.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Pages.PageSample.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Pages.PageSdkSample.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Pages.SdkControlsPage.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Pages.VideoPageSample.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ModuleSample.Pages.WebPageSample.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="RegisterModule.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SdkHelpers.Common\SdkHelpers.Common.csproj">
+      <Project>{5ae234e4-0c85-4e1c-8722-34f5f9871abe}</Project>
+      <Name>SdkHelpers.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

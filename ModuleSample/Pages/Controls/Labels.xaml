@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="ModuleSample.Pages.Controls.Labels"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Tag="Labels">
+
+  <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+    <Label Width="300" Margin="4" Content="Normal label" Style="{Styles {x:Static LabelStyles.Normal}}"/>
+    <Label Width="300" Margin="4" Content="Normal label (not enabled)" Style="{Styles {x:Static LabelStyles.Normal}}" IsEnabled="false"/>
+    <Label Width="300" Margin="4" Content="Introductory label" Style="{Styles {x:Static LabelStyles.Intro}}"/>
+    <Label Width="300" Margin="4" Content="Introductory label (not enabled)" Style="{Styles {x:Static LabelStyles.Intro}}" IsEnabled="False"/>
+    <Label Width="300" Margin="4" Content="Complement label" Style="{Styles {x:Static LabelStyles.Complement}}"/>
+
+    <Separator Margin="0,10,0,10" />
+
+    <!--intro delimiter should not appear when no content-->
+    <Label Width="300" Margin="4" Style="{Styles {x:Static LabelStyles.Intro}}"/>
+    <Label Width="300" Margin="4" Content="Introductory mandatory label" Style="{Styles {x:Static LabelStyles.IntroMandatory}}"/>
+    <Label Width="300" Margin="4" Content="Value label" Style="{Styles {x:Static LabelStyles.Value}}"/>
+    <Label Width="300" Margin="4" Content="Label ending with an ellipsis" Style="{Styles {x:Static LabelStyles.EndEllipsis}}"/>
+
+    <Separator Margin="0,10,0,10"/>
+
+    <Label Width="300" Margin="4" Content="Warning label" Style="{Styles {x:Static LabelStyles.Warning}}"/>
+    <Label Width="300" Margin="4" Content="Error label" Style="{Styles {x:Static LabelStyles.Error}}"/>
+    <Label Width="300" Margin="4" Content="Information label" Style="{Styles {x:Static LabelStyles.Info}}"/>
+    <Label Width="300" Margin="4" Content="Learn label" Style="{Styles {x:Static LabelStyles.Learn}}"/>
+    <Label Width="300" Margin="4" Content="Success label" Style="{Styles {x:Static LabelStyles.Success}}"/>
+  </StackPanel>
+
+</UserControl>

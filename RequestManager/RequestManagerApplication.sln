@@ -1,0 +1,34 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 16.0.29123.88
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMModule", "RMModule\RMModule.csproj", "{8609EB5A-3E3D-4D57-99A1-C1621B78F336}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMSerialization", "RMSerialization\RMSerialization.csproj", "{D77935DA-E1BF-476A-A9E5-23DF71D12C8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMApplication", "RMApplication\RMApplication.csproj", "{EDADDF27-EFFA-4674-A4CA-B2A838C11646}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8609EB5A-3E3D-4D57-99A1-C1621B78F336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8609EB5A-3E3D-4D57-99A1-C1621B78F336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8609EB5A-3E3D-4D57-99A1-C1621B78F336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8609EB5A-3E3D-4D57-99A1-C1621B78F336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D77935DA-E1BF-476A-A9E5-23DF71D12C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77935DA-E1BF-476A-A9E5-23DF71D12C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77935DA-E1BF-476A-A9E5-23DF71D12C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77935DA-E1BF-476A-A9E5-23DF71D12C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDADDF27-EFFA-4674-A4CA-B2A838C11646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDADDF27-EFFA-4674-A4CA-B2A838C11646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDADDF27-EFFA-4674-A4CA-B2A838C11646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDADDF27-EFFA-4674-A4CA-B2A838C11646}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

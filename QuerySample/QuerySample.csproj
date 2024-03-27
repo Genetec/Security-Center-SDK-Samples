@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="16.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CC93D3EB-3CE1-4F37-ACE1-0726D61DEDD8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuerySample</RootNamespace>
+    <AssemblyName>QuerySample</AssemblyName>
+    
+    
+    
+    
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Genetec.Sdk">
+      <Private>False</Private>
+      <HintPath>$(GSC_SDK)\Genetec.Sdk.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivityListQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ActivityListQuery.Designer.cs">
+      <DependentUpon>ActivityListQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlarmQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlarmQueryUI.Designer.cs">
+      <DependentUpon>AlarmQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlockingQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BlockingQueryUI.Designer.cs">
+      <DependentUpon>BlockingQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookmarkQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BookmarkQueryUI.Designer.cs">
+      <DependentUpon>BookmarkQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CameraIntegrityQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CameraIntegrityQueryUI.Designer.cs">
+      <DependentUpon>CameraIntegrityQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FindByPlate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindByPlate.Designer.cs">
+      <DependentUpon>FindByPlate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HitQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HitQueryUI.Designer.cs">
+      <DependentUpon>HitQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InventoryQueryUI.Designer.cs">
+      <DependentUpon>InventoryQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParkingSessionByIdQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ParkingSessionByIdQueryUI.Designer.cs">
+      <DependentUpon>ParkingSessionByIdQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatrollerPositionQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PatrollerPositionQueryUI.Designer.cs">
+      <DependentUpon>PatrollerPositionQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReadQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReadQueryUI.Designer.cs">
+      <DependentUpon>ReadQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SequenceQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SequenceQueryUI.Designer.cs">
+      <DependentUpon>SequenceQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeAttendanceUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TimeAttendanceUI.Designer.cs">
+      <DependentUpon>TimeAttendanceUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VideoFileProtectionUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VideoFileProtectionUI.Designer.cs">
+      <DependentUpon>VideoFileProtectionUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisitorQueryUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VisitorQueryUI.Designer.cs">
+      <DependentUpon>VisitorQueryUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainDlg.Designer.cs">
+      <DependentUpon>MainDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ActivityListQuery.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ActivityListQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlarmQueryUI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AlarmQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlockingQueryUI.resx">
+      <DependentUpon>BlockingQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookmarkQueryUI.resx">
+      <DependentUpon>BookmarkQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CameraIntegrityQueryUI.resx">
+      <DependentUpon>CameraIntegrityQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindByPlate.resx">
+      <DependentUpon>FindByPlate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HitQueryUI.resx">
+      <DependentUpon>HitQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryQueryUI.resx">
+      <DependentUpon>InventoryQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParkingSessionByIdQueryUI.resx">
+      <DependentUpon>ParkingSessionByIdQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatrollerPositionQueryUI.resx">
+      <DependentUpon>PatrollerPositionQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReadQueryUI.resx">
+      <DependentUpon>ReadQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SequenceQueryUI.resx">
+      <DependentUpon>SequenceQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeAttendanceUI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TimeAttendanceUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VideoFileProtectionUI.resx">
+      <DependentUpon>VideoFileProtectionUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitorQueryUI.resx">
+      <DependentUpon>VisitorQueryUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="certificates\QuerySample.exe.cert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SamplesLibrary\SamplesLibrary.csproj">
+      <Project>{78E6F4DF-6125-4B0B-9531-6E010CCF9C51}</Project>
+      <Name>SamplesLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SdkHelpers.Common\SdkHelpers.Common.csproj">
+      <Project>{5AE234E4-0C85-4E1C-8722-34F5F9871ABE}</Project>
+      <Name>SdkHelpers.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

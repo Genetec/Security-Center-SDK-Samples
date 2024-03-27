@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="ModuleSample.Notifications.ConfigToolStartTrayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Notifications="clr-namespace:ModuleSample.Notifications" 
+             Name="ctl">
+  
+  <!--Resources-->
+  <UserControl.Resources>
+    <Notifications:BooleanToCustomVisibilityConverter Inverted="true" x:Key="BooleanToVisibilityInvertedConverter"/>
+  </UserControl.Resources>
+  
+  <!--Body-->
+  <Grid Width="20" Height="20" Margin="2"
+        ToolTip="Double-click to start ConfigTool"
+        MouseLeftButtonDown="OnMouseLeftButtonDown"
+        Visibility="{Binding IsConfigToolRunning, ElementName=ctl, Converter={StaticResource BooleanToVisibilityInvertedConverter}}">
+    
+    <Image Source="pack://application:,,,/ModuleSample;Component/Resources/ConfigToolTray.png" 
+           Width="16" Height="16"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           SnapsToDevicePixels="True"/>
+  </Grid>
+</UserControl>

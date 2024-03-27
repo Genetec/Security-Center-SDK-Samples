@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="ModuleSample.Pages.Controls.Groups"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Tag="Group boxes">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+
+    <!-- group box -->
+    <GroupBox Grid.Row="0" Grid.Column="0" Content="Group box content" Header="Named Group box Header" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{Styles {x:Static GroupBoxStyles.NamedSeparator}}"/>
+
+
+    <GroupBox Grid.Row="1" Grid.Column="0" Header="Named Disabled Group box Header" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{Styles {x:Static GroupBoxStyles.NamedSeparator}}"
+              IsEnabled="False">
+
+      <DockPanel>
+        <Label Style="{Styles {x:Static LabelStyles.Intro}}" Content="Random boolean setting"/>
+        <ToggleButton HorizontalAlignment="Left" Margin="4,0,0,0" Style="{Styles {x:Static ToggleButtonStyles.Default}}" Content="Toggle"/>
+      </DockPanel>
+    </GroupBox>
+
+
+    <!-- multiple group box -->
+    <GroupBox Grid.Row="2" Grid.Column="0" Header="Group box Header" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{Styles {x:Static GroupBoxStyles.NamedSeparator}}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel>
+          <Label Style="{Styles {x:Static LabelStyles.Intro}}" Content="Random boolean setting" VerticalAlignment="Center"/>
+          <ToggleButton HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center"
+                        Style="{Styles {x:Static ToggleButtonStyles.Default}}"
+                        Content="Toggle"/>
+        </DockPanel>
+
+
+        <GroupBox Grid.Row="1" Header="Group box Header">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <DockPanel>
+              <Label Style="{Styles {x:Static LabelStyles.Intro}}" Content="Random boolean setting" VerticalAlignment="Center"/>
+              <ToggleButton HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center"
+                            Content="Toggle"
+                            Style="{Styles {x:Static ToggleButtonStyles.Default}}"/>
+            </DockPanel>
+          </Grid>
+        </GroupBox>
+      </Grid>
+    </GroupBox>
+
+  </Grid>
+
+</UserControl>

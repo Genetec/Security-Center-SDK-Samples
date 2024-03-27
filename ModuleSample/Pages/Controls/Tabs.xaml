@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="ModuleSample.Pages.Controls.Tabs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Tag="Tab controls">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+
+    <TabControl Grid.Row="0" Grid.Column="0" Margin="0,0,10,10" IsSynchronizedWithCurrentItem="True" TabStripPlacement="Top">
+      <TabItem Header="Area view" >
+        <Button VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+      </TabItem>
+      <TabItem Header="Tracking"/>
+      <TabItem Header="Actions"/>
+    </TabControl>
+
+    <TabControl Grid.Row="0" Grid.Column="1" Margin="10,0,0,10" IsSynchronizedWithCurrentItem="True" TabStripPlacement="Right">
+      <TabItem Header="Area view"/>
+      <TabItem Header="Tracking"/>
+      <TabItem Header="Actions"/>
+    </TabControl>
+
+    <TabControl Grid.Row="1" Grid.Column="0" Margin="0,10,10,0" IsSynchronizedWithCurrentItem="True" TabStripPlacement="Left">
+      <TabItem Header="Area view"/>
+      <TabItem Header="Tracking"/>
+      <TabItem Header="Actions"/>
+    </TabControl>
+
+    <TabControl Grid.Row="1" Grid.Column="1" Margin="10,10,0,0" IsSynchronizedWithCurrentItem="True" TabStripPlacement="Bottom">
+      <TabItem Header="Area view"/>
+      <TabItem Header="Tracking"/>
+      <TabItem Header="Actions"/>
+    </TabControl>
+  </Grid>
+
+</UserControl>

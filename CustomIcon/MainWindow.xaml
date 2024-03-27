@@ -1,0 +1,19 @@
+﻿<Window x:Class="CustomIcon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomIcon"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="420" Width="575">
+    <Grid>
+        <Label x:Name="label" Content="Custom Icon" HorizontalAlignment="Left" Height="38" Margin="207,31,0,0" VerticalAlignment="Top" Width="156" FontWeight="Bold" FontSize="24"/>
+        <Button x:Name="AddIconToDirectory" Content="Add Icon To Directory" HorizontalAlignment="Left" VerticalAlignment="Top" Width="186" Margin="67,135,0,0" Height="34" Click="AddIconToDirectory_Click"/>
+        <Button x:Name="RemoveIconFromDirectory" Content="Remove Icon From Directory" HorizontalAlignment="Left" Height="33" Margin="67,256,0,0" VerticalAlignment="Top" Width="186" Click="RemoveIconFromDirectory_Click"/>
+        <Button x:Name="GetCustomIconFromDirectory" Content="Get Custom Icon From Directory" HorizontalAlignment="Left" Height="34" Margin="67,196,0,0" VerticalAlignment="Top" Width="186" Click="GetCustomIconFromDirectory_Click"/>
+        <Button x:Name="GetCustomIcon" Content="Get Custom Icon" HorizontalAlignment="Left" Height="34" Margin="349,135,0,0" VerticalAlignment="Top" Width="169" Click="GetCustomIcon_Click"/>
+        <Button x:Name="SetCustomIcon" Content="Set Custom Icon" HorizontalAlignment="Left" Height="33" Margin="349,196,0,0" VerticalAlignment="Top" Width="169" Click="SetCustomIcon_Click"/>
+        <Button x:Name="ResetCustomIcon" Content="Reset Custom Icon" HorizontalAlignment="Left" Height="34" Margin="349,256,0,0" VerticalAlignment="Top" Width="169" Click="ResetCustomIcon_Click"/>
+        <Button x:Name="CreateEntityAndSetCustomIcon" Content="Create Entity and Set Custom Icon" HorizontalAlignment="Left" Height="33" Margin="207,324,0,0" VerticalAlignment="Top" Width="186" Click="CreateEntityAndSetCustomIcon_Click"/>
+    </Grid>
+</Window>

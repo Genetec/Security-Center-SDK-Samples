@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="UserPrivileges.UserControlPrivilege"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="Auto" Width="auto">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="labelName" Content="Label" MinWidth="300"/>
+            <RadioButton Name="radioButtonGranted" Content="Granted" Checked="RadioButtonGrantedChecked" Width="auto" Margin="5,0,5,0"/>
+            <RadioButton Name="radioButtonDenied" Content="Denied" Checked="RadioButtonDeniedChecked" Width="auto" Margin="5,0,5,0"/>
+            <RadioButton Name="radioButtonUndefined" Content="Undefined" IsChecked="True" Checked="RadioButtonUndefinedChecked" Width="auto" Margin="5,0,5,0"/>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

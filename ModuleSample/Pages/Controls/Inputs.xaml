@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="ModuleSample.Pages.Controls.Inputs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Tag="Input controls"
+             x:Name="ctl">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+
+    <!-- text boxes -->
+    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+      <TextBox Text="Normal textbox" Margin="2" Width="200"/>
+      <TextBox Text="Read-only textbox" Margin="2" Width="200" IsReadOnly="True"/>
+      <TextBox Text="Disabled textbox" Margin="2" Width="200" IsEnabled="False"/>
+      <PasswordBox Password="password" Margin="2" Width="200"/>
+    </StackPanel>
+
+    <!-- combo boxes -->
+    <StackPanel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+      <ComboBox SelectedIndex="1" Margin="2" Width="250" Background="Red">
+        <ComboBoxItem Content="Coke"/>
+        <ComboBoxItem Content="Pepsi"/>
+        <ComboBoxItem Content="Orange Juice"/>
+        <ComboBoxItem Content="Milk"/>
+        <ComboBoxItem Content="Iced Tea"/>
+        <ComboBoxItem Content="Mango Shake"/>
+      </ComboBox>
+
+      <ComboBox SelectedIndex="0" Margin="2" Width="250" IsEnabled="False">
+        <ComboBoxItem Content="IsEnabled - False"/>
+        <ComboBoxItem Content="Pepsi"/>
+        <ComboBoxItem Content="Orange Juice"/>
+        <ComboBoxItem Content="Milk"/>
+        <ComboBoxItem Content="Iced Tea"/>
+        <ComboBoxItem Content="Mango Shake"/>
+      </ComboBox>
+
+      <ComboBox SelectedIndex="0" Margin="2" Width="250" IsDropDownOpen="False" IsEditable="True">
+        <ComboBoxItem Content="IsEditable - True"/>
+        <ComboBoxItem Content="Pepsi"/>
+        <ComboBoxItem Content="Orange Juice"/>
+        <ComboBoxItem Content="Milk"/>
+        <ComboBoxItem Content="Iced Tea"/>
+        <ComboBoxItem Content="Mango Shake"/>
+      </ComboBox>
+
+      <ComboBox SelectedIndex="0" Margin="2" Width="250" IsReadOnly="True">
+        <ComboBoxItem Content="Read-only - True"/>
+        <ComboBoxItem Content="Pepsi"/>
+        <ComboBoxItem Content="Orange Juice"/>
+        <ComboBoxItem Content="Milk"/>
+        <ComboBoxItem Content="Iced Tea"/>
+        <ComboBoxItem Content="Mango Shake"/>
+      </ComboBox>
+
+      <ComboBox SelectedIndex="0" Margin="2" Width="250" IsDropDownOpen="False" IsEditable="True" IsEnabled="False">
+        <ComboBoxItem Content="IsEditable - True, IsEnabled - False"/>
+        <ComboBoxItem Content="Pepsi"/>
+        <ComboBoxItem Content="Orange Juice"/>
+        <ComboBoxItem Content="Milk"/>
+        <ComboBoxItem Content="Iced Tea"/>
+        <ComboBoxItem Content="Mango Shake"/>
+      </ComboBox>
+
+      <!-- Rich textbox -->
+      <RichTextBox Margin="2" Width="200" HorizontalAlignment="Left"/>
+
+
+    </StackPanel>
+
+    <!-- numeric up/down -->
+    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
+      <NumericUpDown Increment="1" Width="80" Margin="4" Value="12" />
+      <NumericUpDown Increment="1" Width="80" Margin="4" Value="12" Minimum="0" Maximum="10" />
+      <NumericUpDown Increment="1" Width="80" Margin="4" Value="12" IsEnabled="False" />
+    </StackPanel>
+
+    <!-- IP controls -->
+    <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
+      <IPAddressTextBox Mode="IPV4"  />
+      <IPAddressTextBox Mode="IPV4" IsEnabled="False"/>
+      <IPAddressTextBox Mode="IPV6" />
+      <IPAddressTextBox Mode="IPV6" IsEnabled="False"/>
+    </StackPanel>
+
+  </Grid>
+
+</UserControl>

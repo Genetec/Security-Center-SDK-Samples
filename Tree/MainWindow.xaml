@@ -1,0 +1,23 @@
+﻿<Window x:Class="Tree.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Tree="clr-namespace:Tree"
+        Title="MainWindow"
+        Height="350"
+        Width="525">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+      <Button Name="m_logOn" Width="75" Margin="2" Content="LogOn" Click="OnButtonLogonClick" />
+      <Button Name="m_logOff" Width="75" Margin="2" Content="LogOff" Click="OnButtonLogOffClick" IsEnabled="False" />
+    </StackPanel>
+    <DockPanel Grid.Row="1">
+      <Tree:EntityTree x:Name="m_tree" Margin="4" Width="200" SelectedItemChanged="OnTreeSelecetedItemChanged" />
+      <TextBox Name="m_treeInformation" />
+    </DockPanel>
+  </Grid>
+</Window>

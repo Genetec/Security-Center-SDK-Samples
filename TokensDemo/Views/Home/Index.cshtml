@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Tokens Demo";
+
+    // Sessions
+    var login = Session["SESSION_LOGIN"].ToString();
+
+    // Messages
+    var messageError = ViewBag.MessageError;
+    var messageInfo = ViewBag.MessageInfo;
+
+    // Tokens data
+    var tokenGlobalEncoded = ViewBag.TokenGlobaEncoded;
+    var tokenGlobalHeader = ViewBag.TokenGlobalHeader;
+    var tokenGlobalPayload = ViewBag.TokenGlobalPayload;
+    var tokenWebEncoded = ViewBag.TokenWebEncoded;
+    var tokenWebHeader = ViewBag.TokenWebHeader;
+    var tokenWebPayload = ViewBag.TokenWebPayload;
+    var tokenEntityEncoded = ViewBag.TokenEntityEncoded;
+    var tokenEntityHeader = ViewBag.TokenEntityHeader;
+    var tokenEntityPaylaod = ViewBag.TokenEntityPayload;
+
+    // Post values
+    var guid = "";
+    if (IsPost)
+    {
+        guid = Request.Form["guid"];
+    }
+}
+<div>
+    @if (messageError != null)
+    {
+        <div class="alert alert-danger" role="alert">@messageError</div>
+    }
+    @if (messageInfo != null)
+    {
+        <div class="alert alert-info" role="alert">@messageInfo</div>
+    }
+    
+</div>
+@if (login == "loggedOn")
+{
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <h4 style="display:inline;">Global Token</h4>
+            <a class="btn btn-info" onclick="location.href='@Url.Action("GetGlobalPrivilegeToken", "Home")'">Have a look</a>
+        </div>
+        <div class="col-md-3 text-center">
+            <h4 style="display:inline;">Web Token</h4>
+            <a class="btn btn-info" onclick="location.href='@Url.Action("GetWebToken", "Home")'">Have a look</a>
+        </div>
+        <div class="col-md-6 text-center">
+            <h4 style="display:inline;">Entity Token</h4>
+            <form method="post" style="display:inline;">
+                <input type="text" name="guid" placeholder="Enter Guid" value="@guid" size="70" />
+                <button class="btn btn-info" type="submit" formaction='@Url.Action("GetEntityToken", "Home")'> Have a look</button>
+            </form>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" style="margin-top: 20px; padding: 10px;">
+            @if (tokenGlobalEncoded != null)
+            {
+                <div class="row">
+                    <h1 style="text-align:center;">Global Token</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Encoded</h3>
+                        <p style="word-wrap:break-word; white-space: pre-wrap;">@tokenGlobalEncoded</p>
+                    </div>
+                    <div>
+                        <h3>Decoded</h3>
+                        <b>Header</b>
+                        <p>@tokenGlobalHeader</p>
+                        <b>Payload</b>
+                        <p>@tokenGlobalPayload</p>
+                    </div>
+                </div>
+            }
+            @if (tokenWebEncoded != null)
+            {
+                <div class="row">
+                    <h1 style="text-align:center;">Web Token</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Encoded</h3>
+                        <p style="word-wrap:break-word; white-space: pre-wrap;">@tokenWebEncoded</p>
+                    </div>
+                    <div>
+                        <h3>Decoded</h3>
+                        <b>Header</b>
+                        <p>@tokenWebHeader</p>
+                        <b>Payload</b>
+                        <p>@tokenWebPayload</p>
+                    </div>
+                </div>
+            }
+            @if (tokenEntityEncoded != null)
+            {
+                <div class="row">
+                    <h1 style="text-align:center;">Entity Token</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Encoded</h3>
+                        <p style="word-wrap:break-word; white-space: pre-wrap;">@tokenEntityEncoded</p>
+                    </div>
+                    <div>
+                        <h3>Decoded</h3>
+                        <b>Header</b>
+                        <p>@tokenEntityHeader</p>
+                        <b>Payload</b>
+                        <p>@tokenEntityPaylaod</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

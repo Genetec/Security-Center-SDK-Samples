@@ -1,0 +1,47 @@
+﻿<Window x:Class="BasicLogin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="BasicLogin" Height="353.422" Width="577.36" 
+        ResizeMode="CanMinimize">
+    <Grid>
+        <TextBox x:Name="m_messageConsole" VerticalScrollBarVisibility="Visible" Text="{Binding Path=MessageConsoleText}" HorizontalAlignment="Left" Height="228" Margin="10,32,0,0" VerticalAlignment="Top" Width="535"/>
+        <Button Content="LogOn" HorizontalAlignment="Left" Margin="244,265,0,0" VerticalAlignment="Top" Width="97" Height="32" Click="OnButtonLogOnClick">
+            <Button.Style>
+                <Style>
+                    <Setter Property="Button.IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=IsSdkEngineConnected}" Value="false"/>
+                                <Condition Binding="{Binding Path=LogonAttempt}" Value="false"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Button.IsEnabled" Value="True"></Setter>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="LogOnAsync" HorizontalAlignment="Left" Margin="346,265,0,0" VerticalAlignment="Top" Width="97" Height="32" Click="OnButtonLogOnAsyncClick" >
+            <Button.Style>
+                <Style>
+                    <Setter Property="Button.IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=IsSdkEngineConnected}" Value="false"/>
+                                <Condition Binding="{Binding Path=LogonAttempt}" Value="false"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Button.IsEnabled" Value="True"></Setter>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="LogOff" HorizontalAlignment="Left" Margin="448,265,0,0" VerticalAlignment="Top" Width="97" Height="32" Click="OnButtonLogOffClick" IsEnabled="{Binding Path=IsSdkEngineConnected}"/>
+        <Label x:Name="label" Content="Message Console" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+    </Grid>
+
+</Window>

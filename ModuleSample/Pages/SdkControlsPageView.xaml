@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="ModuleSample.Pages.SdkControlsPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="ctl"
+             Foreground="White">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0"
+          Background="#20FFFFFF">
+      <StackPanel Orientation="Horizontal" Margin="12">
+
+        <!-- Pages -->
+        <Label Content="Controls" 
+               Style="{Styles {x:Static LabelStyles.Intro}}"
+               VerticalAlignment="Center"/>
+        <ComboBox x:Name="m_list"
+                  Margin="4,0,0,0"
+                  VerticalAlignment="Center"
+                  ItemsSource="{Binding Path=Pages, ElementName=ctl}"
+                  MinWidth="200"
+                  MaxDropDownHeight="500"
+                  SelectionChanged="OnListSelectionChanged">
+          <ComboBox.ItemTemplate>
+            <DataTemplate >
+              <DockPanel>
+                <Image Source="{Binding Path=Icon}" 
+                        VerticalAlignment="Center" Width="16" 
+                        Margin="0,0,4,0"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                <TextBlock Text="{Binding Path=Title}"
+                            VerticalAlignment="Center"/>
+              </DockPanel>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <!-- Culture -->
+        <Label Content="Culture" 
+               Style="{Styles {x:Static LabelStyles.Intro}}"
+               Margin="24,0,0,0"
+               VerticalAlignment="Center"/>
+        <ComboBox Margin="4,0,0,0" 
+                  MinWidth="150" 
+                  VerticalAlignment="Center"
+                  ItemsSource="{Binding Path=Cultures, ElementName=ctl}" 
+                  SelectedItem="{Binding Path=CurrentCulture, ElementName=ctl}">
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <Grid Focusable="False">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" SharedSizeGroup="Native" />
+                  <ColumnDefinition  />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding NativeName}" FontSize="12" Margin="4,0,8,0" />
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding EnglishName}" FontSize="10" Opacity="0.5" Margin="8,0" />
+              </Grid>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+
+      </StackPanel>
+
+      <Border VerticalAlignment="Bottom" Height="4" Margin="0,0,0,-4">
+        <Border.Background>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#80000000" Offset="0"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+          </LinearGradientBrush>
+        </Border.Background>
+      </Border>
+    </Grid>
+
+    <ScrollViewer Grid.Row="1"
+                  Background="#20FFFFFF"
+                  UseLayoutRounding="True">
+      <Border Name="m_contentContainer"
+            UseLayoutRounding="True"
+            Margin="20"/>
+    </ScrollViewer>
+
+
+  </Grid>
+</UserControl>

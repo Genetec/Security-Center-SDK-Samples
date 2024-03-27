@@ -1,0 +1,36 @@
+﻿<Window x:Class="Listener.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Listener"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="458" Width="810" ResizeMode="NoResize">
+    <Grid>
+        <ProgressBar x:Name="ConnectionProgressBar" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="800"/>
+        <ToggleButton x:Name="LogButton"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top" 
+                      Margin="709,391,0,0" 
+                      Width="75"
+                      Checked="LogButton_Checked"
+                      Unchecked="LogButton_Unchecked">
+            <ToggleButton.Style>
+                <Style TargetType="{x:Type ToggleButton}">
+                    <Setter Property="Content" Value="Login"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Content" Value="Logout"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+        <ListView ItemsSource="{Binding DisplayInformation}"
+                  HorizontalAlignment="Left" 
+                  Height="371" 
+                  Margin="10,15,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="774" />
+    </Grid>
+</Window>

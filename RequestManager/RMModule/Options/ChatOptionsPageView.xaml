@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="RMModule.Options.ChatOptionsPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <GroupBox Header="Chat options (Request Manager Module SDK sample)">
+  <Grid VerticalAlignment="Top">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+      <Label Grid.Column="0" Content="Can Save Chat:" Foreground="White"/>
+      <CheckBox Grid.Column="1" IsChecked="{Binding Path=CanSave, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+      <Label Grid.Column="2" Content="Show module description dialog on logon :" Foreground="White" Margin="30,0,0,0"/>
+      <CheckBox Grid.Column="3" IsChecked="{Binding Path=ShowPopup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+    </Grid>
+  </GroupBox>
+</UserControl>

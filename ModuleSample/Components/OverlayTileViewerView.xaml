@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="ModuleSample.Components.OverlayTileViewerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ModuleSample.Components"
+             Background="{x:Null}">
+
+  <UserControl.Resources>
+    <local:UtcToLocalTimeConverter x:Key="UtcToLocalTimeConverter"/>
+    <local:WidthToFontSizeConverter x:Key="WidthToTontSizeConverter"/>
+  </UserControl.Resources>
+
+  <Canvas Name="m_canvas">
+
+    <Grid Name="m_gridVideo" Height="56" Width="114" Opacity="10">
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <Border Name="m_border" BorderBrush="red" BorderThickness="10" Visibility="Visible" Grid.RowSpan="3"/>
+
+      <TextBlock Grid.Row="0" Text="{Binding Path=VideoTime, Converter={StaticResource UtcToLocalTimeConverter}}" Foreground="#200000FF" FontSize="{Binding Path=ActualWidth, ElementName=m_gridVideo, Converter={StaticResource WidthToTontSizeConverter}}" TextAlignment="Center"/>
+
+      <Label Grid.Row="1">
+        <Hyperlink TextBlock.FontSize="16"
+                Click="OnButtonClick" 
+                Foreground="Blue">
+          <TextBlock Text="Play/Pause"/>
+        </Hyperlink>
+      </Label>
+    </Grid>
+
+  </Canvas>
+
+</UserControl>

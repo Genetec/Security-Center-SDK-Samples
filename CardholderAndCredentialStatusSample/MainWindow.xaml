@@ -1,0 +1,53 @@
+﻿<Window x:Class="CardholderAndCredentialStatusSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="435.208" Width="575">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">
+            <TextBlock TextDecorations="Underline" FontSize="20">Credentials</TextBlock>
+        </Label>
+        <Button Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Activate Now" Command="{Binding CredentialStatus.ActivateNowCommand}"/>
+        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Activate Future" Command="{Binding CredentialStatus.ActivateFutureCommand}"/>
+        <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Activate Period" Command="{Binding CredentialStatus.ActivatePeriodCommand}"/>
+        <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Deactivate Now" Command="{Binding CredentialStatus.DeactivateNowCommand}"/>
+        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Deactivate Future" Command="{Binding CredentialStatus.DeactivateFutureCommand}"/>
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Expire on First Use" Command="{Binding CredentialStatus.ExpireOnFirstUseCommand}"/>
+        <Button Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Expire When Not Used" Command="{Binding CredentialStatus.ExpireWhenNotUsedCommand}"/>
+        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Lost" Command="{Binding CredentialStatus.LostCommand}"/>
+        <Button Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Stolen" RenderTransformOrigin="0.179,0.546" Command="{Binding CredentialStatus.StolenCommand}"/>
+        <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Properties" Command="{Binding CredentialStatus.PropertiesCommand}"/>
+        <Button Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Expiration to Never" Command="{Binding CredentialStatus.ExpirationToNeverCommand}" Margin="32.333,12.333,32,12"/>
+        <Label Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125"  FontWeight="Bold">
+            <TextBlock TextDecorations="Underline" FontSize="20" Text="Cardholders"/>
+        </Label>
+        <Button Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Activate Now" Command="{Binding CardholderStatus.ActivateNowCommand}"/>
+        <Button Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Activate Future" Command="{Binding CardholderStatus.ActivateFutureCommand}"/>
+        <Button Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Activate Period" Command="{Binding CardholderStatus.ActivatePeriodCommand}"/>
+        <Button Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Deactivate Now" Command="{Binding CardholderStatus.DeactivateNowCommand}"/>
+        <Button Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Deactivate Future" Command="{Binding CardholderStatus.DeactivateFutureCommand}"/>
+        <Button Grid.Row="7" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Expire on First Use" Command="{Binding CardholderStatus.ExpireOnFirstUseCommand}"/>
+        <Button Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Expire When Not Used" Command="{Binding CardholderStatus.ExpireWhenNotUsedCommand}"/>
+        <Button Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Properties" Command="{Binding CardholderStatus.PropertiesCommand}"/>
+        <Button Grid.Row="8" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="125" Content="Expiration to Never" Command="{Binding CardholderStatus.ExpirationToNeverCommand}" Margin="32.333,12.333,32,12.333"/>
+
+    </Grid>
+</Window>

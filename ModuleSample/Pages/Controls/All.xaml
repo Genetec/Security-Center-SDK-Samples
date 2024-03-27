@@ -1,0 +1,166 @@
+﻿<UserControl x:Class="ModuleSample.Pages.Controls.All"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Tag="All">
+
+  <DockPanel LastChildFill="False">
+
+    <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+
+      <!-- Buttons -->
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="8">
+        <Button Content="Button" MinWidth="68" Style="{Styles {x:Static ButtonStyles.Default}}"/>
+        <Button Content="FlatButton" MinWidth="68" Style="{Styles {x:Static ButtonStyles.Flat}}"/>
+      </StackPanel>
+
+      <!-- Toggle buttons -->
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="8">
+        <ToggleButton Content="ToggleButton" MinWidth="68" Style="{Styles {x:Static ToggleButtonStyles.Default}}"/>
+        <ToggleButton Content="FlatToggleButton" MinWidth="68" Style="{Styles {x:Static ToggleButtonStyles.Flat}}"/>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="8">
+        <!-- Check boxes -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0,0,20,0">
+          <CheckBox Content="Checked" IsChecked="True"/>
+          <CheckBox Content="Unchecked" Margin="0,6,0,0"/>
+        </StackPanel>
+
+        <!-- Radio buttons -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+          <RadioButton Content="Selected" IsChecked="True" Style="{Styles {x:Static RadioButtonStyles.Default}}"/>
+          <RadioButton Content="Unselected" Margin="0,6,0,0" Style="{Styles {x:Static RadioButtonStyles.Default}}"/>
+          <RadioButton Content="Selected" IsChecked="True" Style="{Styles {x:Static RadioButtonStyles.ToggleLike}}"/>
+          <RadioButton Content="Unselected" Margin="0,6,0,0" Style="{Styles {x:Static RadioButtonStyles.ToggleLike}}"/>
+          <RadioButton Content="Selected" IsChecked="True" Style="{Styles {x:Static RadioButtonStyles.Tool}}"/>
+          <RadioButton Content="Unselected" Margin="0,6,0,0" Style="{Styles {x:Static RadioButtonStyles.Tool}}"/>
+        </StackPanel>
+      </StackPanel>
+
+      <!-- Combo boxes -->
+      <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="8" Width="120">
+        <ComboBox SelectedIndex="0">
+          <ComboBoxItem Content="Item 1"/>
+          <ComboBoxItem Content="Item 2"/>
+          <ComboBoxItem Content="Item 3"/>
+          <ComboBoxItem Content="Item 4"/>
+        </ComboBox>
+        <ComboBox SelectedIndex="0" IsEditable="True" Margin="0,6,0,0">
+          <ComboBoxItem Content="Item 1"/>
+          <ComboBoxItem Content="Item 2"/>
+          <ComboBoxItem Content="Item 3"/>
+          <ComboBoxItem Content="Item 4"/>
+        </ComboBox>
+      </StackPanel>
+
+      <!-- Labels -->
+      <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="8">
+        <Label Content="Normal label" Style="{Styles {x:Static LabelStyles.Normal}}" Margin="0,0,0,0" />
+        <Label Content="Mandatory intro" Style="{Styles {x:Static LabelStyles.IntroMandatory}}" Margin="0,4,0,0" />
+        <Label Content="Value" Style="{Styles {x:Static LabelStyles.Value}}" Margin="0,4,0,0" />
+        <Label Content="Ending with an ellipsis" Style="{Styles {x:Static LabelStyles.EndEllipsis}}" Margin="0,4,0,0" />
+        <Label Content="Hint warning" Style="{Styles {x:Static LabelStyles.Warning}}" Margin="0,4,0,0" />
+        <Label Content="Hint error" Style="{Styles {x:Static LabelStyles.Error}}" Margin="0,4,0,0" />
+        <Label Content="Hint information" Style="{Styles {x:Static LabelStyles.Info}}" Margin="0,4,0,0" />
+        <Label Content="Hint learn" Style="{Styles {x:Static LabelStyles.Learn}}" Margin="0,4,0,0" />
+      </StackPanel>
+
+    </StackPanel>
+
+    <Separator DockPanel.Dock="Left" Margin="10,0,10,0"/>
+
+    <StackPanel DockPanel.Dock="Left" Width="240" Orientation="Vertical">
+
+      <GroupBox Header="GroupBox" Margin="8" Style="{Styles {x:Static GroupBoxStyles.Default}}">
+        <Label Content="Content" Foreground="DimGray" FontSize="24" FontFamily="SegoeUI Light"/>
+      </GroupBox>
+
+      <GroupBox Margin="8" Style="{Styles {x:Static GroupBoxStyles.Default}}">
+        <Label Content="Headerless groupbox" Style="{Styles {x:Static LabelStyles.Normal}}"/>
+      </GroupBox>
+
+      <GroupBox Header="Named GroupBox" Style="{Styles {x:Static GroupBoxStyles.NamedSeparator}}" Margin="8"/>
+
+      <Separator Margin="8"/>
+
+      <!-- Date and time pickers -->
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="8">
+        <DateTimePicker HorizontalAlignment="Left" DisplayType="Date"/>
+        <DateTimePicker HorizontalAlignment="Left" DisplayType="Time" Margin="8,0,0,0"/>
+      </StackPanel>
+
+      <Expander Header="Expander" Margin="8" Style="{Styles {x:Static ExpanderStyles.Default}}">
+        <StackPanel>
+          <Label Content="Content" Foreground="DimGray" FontSize="24" FontFamily="SegoeUI Light"/>
+        </StackPanel>
+      </Expander>
+
+      <ListBox Margin="8">
+        <ListBoxItem Content="Item 1"/>
+        <ListBoxItem Content="Item 2"/>
+        <ListBoxItem Content="Item 3"/>
+        <ListBoxItem Content="Item 4"/>
+      </ListBox>
+
+      <ListView Margin="8">
+        <ListView.View>
+          <GridView>
+            <GridViewColumn Header="Data" Width="80"/>
+            <GridViewColumn Header="Length" Width="80"/>
+          </GridView>
+        </ListView.View>
+        <ListViewItem Content="Coke"/>
+        <ListViewItem Content="Pepsi"/>
+        <ListViewItem Content="Orange Juice"/>
+        <ListViewItem Content="Milk"/>
+        <ListViewItem Content="Iced Tea"/>
+        <ListViewItem Content="Mango Shake"/>
+      </ListView>
+
+    </StackPanel>
+
+    <StackPanel DockPanel.Dock="Left" Width="240" Orientation="Vertical">
+
+      <!-- Progress bars -->
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="8">
+        <ProgressBar Value="60" Width="100" Height="16" Orientation="Horizontal" />
+        <ProgressBar Value="60" Width="100" Height="16" Orientation="Horizontal" IsIndeterminate="True" Margin="8,0,0,0" />
+      </StackPanel>
+
+      <Slider Value="6" Minimum="0" Maximum="10"  Orientation="Horizontal" AutoToolTipPlacement="TopLeft" Margin="8" />
+
+      <StackPanel Orientation="Horizontal" Margin="8">
+        <NumericUpDown Increment="1" Width="80" Minimum="0" Maximum="100" HorizontalAlignment="Center"/>
+      </StackPanel>
+
+      <TabControl Height="100" IsSynchronizedWithCurrentItem="True" TabStripPlacement="Top" Margin="8">
+        <TabItem Header="Item 1" />
+        <TabItem Header="Item 2" />
+        <TabItem Header="Item 3" />
+      </TabControl>
+
+      <!-- normal tree view -->
+      <TreeView Height="160" Margin="8" >
+        <TreeViewItem Header="Cold Drinks" IsExpanded="True">
+          <TreeViewItem Header="Coke"/>
+          <TreeViewItem Header="Pepsi"/>
+          <TreeViewItem Header="Orange Juice"/>
+          <TreeViewItem Header="Milk"/>
+          <TreeViewItem Header="Iced Tea"/>
+          <TreeViewItem Header="Mango Shake"/>
+        </TreeViewItem>
+        <TreeViewItem Header="Snacks" IsExpanded="True">
+          <TreeViewItem Header="Hot dog"/>
+          <TreeViewItem Header="Hamburger"/>
+          <TreeViewItem Header="Fries"/>
+          <TreeViewItem Header="Pogo"/>
+          <TreeViewItem Header="Poutine"/>
+          <TreeViewItem Header="Smoked meat"/>
+        </TreeViewItem>
+      </TreeView>
+
+    </StackPanel>
+
+  </DockPanel>
+
+</UserControl>

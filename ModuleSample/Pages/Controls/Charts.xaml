@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ModuleSample.Pages.Controls.Charts"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:charts="clr-namespace:Genetec.Sdk.Controls.Charts;assembly=Genetec.Sdk.Controls"
+             xmlns:converters="clr-namespace:ModuleSample.Converters"
+             xmlns:local="clr-namespace:ModuleSample.Pages.Controls"
+             mc:Ignorable="d" Tag="Charts" x:Name="ctl"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:EnumMatchToVisibilityConverter x:Key="EnumMatchToVisibilityConverter"/>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="charts:ChartType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="4" Grid.Row="0">
+
+            <Label VerticalAlignment="Center" Content="Chart type" Margin="4,4,0,4" Foreground="White"/>
+
+            <ComboBox VerticalAlignment="Center" Width="125" Height="28" ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
+                      SelectedItem="{Binding ElementName=ctl, Path=CurrentChartType, Mode=TwoWay}" />
+
+            <Label VerticalAlignment="Center" Content="Series count" Margin="24,4,0,4" Foreground="White"/>
+            <NumericUpDown VerticalAlignment="Center" Value="{Binding ElementName=ctl, Path=SeriesCount, Mode=TwoWay}" Minimum="1" Maximum="20" Width="40" Height="28"/>
+
+            <CheckBox VerticalAlignment="Center" Content="DisableAnimations" Margin="24,4,4,4" IsChecked="{Binding ElementName=ctl, Path=DisableAnimations}"/>
+
+            <CheckBox VerticalAlignment="Center" Content="ShowLegend" Margin="24,4,4,4" IsChecked="{Binding ElementName=ctl, Path=ShowLegend}"/>
+
+            <CheckBox VerticalAlignment="Center" Content="PerformanceMode" Margin="24,4,4,4" IsChecked="{Binding ElementName=ctl, Path=PerformanceMode}" 
+                      Visibility="{Binding ElementName=ctl, Path=CurrentChartType, Converter={StaticResource EnumMatchToVisibilityConverter}, ConverterParameter={x:Static charts:ChartType.Line}}"/>
+
+
+        </StackPanel>
+
+
+        <UserControl Grid.Row="1" Margin="20" x:Name="m_chartContainer"/>
+
+    </Grid>
+</UserControl>

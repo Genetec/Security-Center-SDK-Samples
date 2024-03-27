@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ModulePrivileges>
+  <Resources fallbackLanguage="en"/>
+  <Privileges>
+      <!-- Global privileges for solution-->
+    <Privilege image=""
+               priority="20"
+               description="Advanced Custom Entity"
+               type="Group"
+               id="{C20AB6D8-81A3-4A56-A867-91C8C41C2B5F}" parentId="{38ACC600-4A32-44ff-8DF5-0797D888930B}"/>
+
+    <!--(1) View -->
+    <Privilege id="{9E88FD7B-3364-459B-84BB-FCBE99D823FF}" parentId="{C20AB6D8-81A3-4A56-A867-91C8C41C2B5F}"
+               type="Task"
+               description="View Custom Cam Entities"
+               priority="20" image="" />
+
+
+    <!--(2) Add -->
+    <Privilege id="{87B07BF4-E3AD-42C9-8C4F-4276789B5077}" parentId="{C20AB6D8-81A3-4A56-A867-91C8C41C2B5F}"
+               type="Task"
+               description="Add Custom Cam Entities"
+               priority="20" image="" />
+
+    <!--(3) Remove -->
+    <Privilege id="{D4A9619F-55AB-4A7A-AA9C-F52185A6A422}" parentId="{C20AB6D8-81A3-4A56-A867-91C8C41C2B5F}"
+               type="Task"
+               description="Remove Custom Cam Entities"
+               priority="20" image="" />
+
+    <!--(4) Modify -->
+    <Privilege id="{554795C9-6530-4DF8-B67B-91180E5BA8BA}" parentId="{C20AB6D8-81A3-4A56-A867-91C8C41C2B5F}"
+               type="Task"
+               description="Modify Custom Cam Entities"
+               priority="20" image="" />
+
+  </Privileges>
+</ModulePrivileges>

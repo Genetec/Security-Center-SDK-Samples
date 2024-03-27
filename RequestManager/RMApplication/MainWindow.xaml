@@ -1,0 +1,86 @@
+﻿<Window x:Class="RMApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:RMApplication.Converters"
+        Name="ctl"
+        Title="Chat Application" Height="550" Width="565">
+  <Window.Resources>
+    <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+  </Window.Resources>
+  <Grid Margin="20">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="Directory" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" />
+        <TextBox Grid.Column="1" Grid.Row="0" Name="directory" Text="localhost" Margin="5" IsEnabled="{Binding Path=IsSdkEngineConnected, Converter={StaticResource InverseBooleanConverter}}"/>
+        <Label Content="User Name" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" />
+        <TextBox Grid.Column="1" Grid.Row="1" Name="userName" Text="Admin" Margin="5" >
+          <TextBox.Style>
+            <Style>
+              <Setter Property="TextBox.IsEnabled" Value="True"/>
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=IsSdkEngineConnected}" Value="true">
+                  <Setter Property="TextBox.IsEnabled" Value="False"/>
+                </DataTrigger>
+                <MultiDataTrigger>
+                  <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=IsSdkEngineConnected}" Value="false"/>
+                    <Condition Binding="{Binding ElementName=checkboxWindowsCredentials, Path=IsChecked}" Value="true"/>
+                  </MultiDataTrigger.Conditions>
+                  <Setter Property="TextBox.IsEnabled" Value="False"/>
+                </MultiDataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBox.Style>
+        </TextBox>
+        <Label Content="Password" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" />
+        <PasswordBox Grid.Column="1" Grid.Row="2" Name="password" Margin="5">
+        <PasswordBox.Style>
+          <Style>
+            <Setter Property="PasswordBox.IsEnabled" Value="True"/>
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding Path=IsSdkEngineConnected}" Value="true">
+                <Setter Property="PasswordBox.IsEnabled" Value="False"/>
+              </DataTrigger>
+              <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                  <Condition Binding="{Binding Path=IsSdkEngineConnected}" Value="false"/>
+                  <Condition Binding="{Binding ElementName=checkboxWindowsCredentials, Path=IsChecked}" Value="true"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="PasswordBox.IsEnabled" Value="False"/>
+              </MultiDataTrigger>
+            </Style.Triggers>
+          </Style>
+        </PasswordBox.Style>
+      </PasswordBox>
+      <WrapPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Name="actionWrapPanel" Margin="0,0,0,15">
+        <Button Click="OnButtonConnectClick" Content="{Binding Path=ConnectContent}" Name="connect" HorizontalAlignment="Right"/>
+        <CheckBox Name="checkboxWindowsCredentials" Content="Use Windows credentials" VerticalAlignment="Center" Margin="2"/>
+      </WrapPanel>
+    <TextBlock Grid.Row="4" Grid.Column="0" Text="Remote end point" Margin="4,5" HorizontalAlignment="Right" />
+    <ComboBox Grid.Row="4" Grid.Column="1" Name="comboboxEndPoint" ItemsSource="{Binding Path=RemoteEndPointItems}" SelectedIndex="{Binding Path=RemoteEndPointSelectedIndex}"/>
+    <TextBlock Grid.Row="5" Grid.Column="0" Text="Received text" Margin="4,5" HorizontalAlignment="Right" />
+    <RichTextBox Grid.Row="5" x:Name="richtextboxMessages" Grid.Column="1" HorizontalAlignment="Left" Height="300" Width="400" >
+      <FlowDocument>
+        <Paragraph>
+          <Run Text="{Binding ReceivedText, ElementName=ctl, UpdateSourceTrigger=PropertyChanged}"/>
+        </Paragraph>
+      </FlowDocument>
+    </RichTextBox>
+    <Button x:Name="buttonSend" Grid.Row="6" Grid.Column="0" Content="Send" Margin="4,5" Click="OnButtonSendClick"/>
+    <TextBox Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Height="23" Width="400" Text="{Binding MessageToSend, ElementName=ctl, UpdateSourceTrigger=PropertyChanged}" Margin="0,2" KeyDown="OnTextBoxKeyDown"/>
+
+
+  </Grid>
+</Window>

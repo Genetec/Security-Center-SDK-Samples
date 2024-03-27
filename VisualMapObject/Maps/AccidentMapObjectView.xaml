@@ -1,0 +1,21 @@
+﻿<maps:MapObjectView x:Class="VisualMapObject.Maps.AccidentMapObjectView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:maps="clr-namespace:Genetec.Sdk.Workspace.Maps;assembly=Genetec.Sdk.Workspace"
+             Height="32" Width="32">
+
+    <Image Source="../Resources/incident.png" MouseRightButtonUp="OnImageMouseRightButtonUp">
+        <Image.ToolTip>
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontWeight="Bold" Text="Accident"/>
+                <TextBlock Name="m_txtDescription"/>
+            </StackPanel>
+        </Image.ToolTip>
+        <Image.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Remove" Click="OnMenuRemoveClick"/>
+            </ContextMenu>
+        </Image.ContextMenu>
+    </Image>
+
+</maps:MapObjectView>

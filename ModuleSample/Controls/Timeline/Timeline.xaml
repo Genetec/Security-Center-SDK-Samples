@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="ModuleSample.Controls.Timeline.Timeline"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:layers="clr-namespace:ModuleSample.Controls.Timeline.Layers"
+             ClipToBounds="True">
+
+  <Grid Height="38">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="18"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="18"/>
+      <ColumnDefinition Width="18"/>
+    </Grid.ColumnDefinitions>
+
+    <!-- Scroll left button -->
+    <Button Grid.Column="0"
+            Click="OnButtonScrollLeft"
+            Style="{StaticResource FlatButton}">
+      <Image Source="pack://application:,,,/ModuleSample;Component/Controls/Timeline/Resources/Pan Left.png"
+             Width="16" Height="16"
+             HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Button>
+
+    <!-- Border containing events layer and ticks layer -->
+    <Border Grid.Column="1"
+            Background="Transparent"
+            BorderBrush="DarkGray"
+            BorderThickness="1"
+            CornerRadius="2">
+      <Grid Name="m_gridLayers">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="20"/>
+          <RowDefinition Height="16"/>
+        </Grid.RowDefinitions>
+
+        <!-- Events layers -->
+        <Grid Grid.Row="0"
+              Background="DimGray"
+              SnapsToDevicePixels="True"
+              UseLayoutRounding="True"
+              RenderOptions.EdgeMode="Aliased"
+              MouseLeftButtonDown="OnCanvasMouseLeftButtonDown"
+              ClipToBounds="True">
+          <layers:EventsLayer x:Name="m_layerSequences" SnapsToDevicePixels="True"/>
+          <layers:EventsLayer x:Name="m_layerMotions" SnapsToDevicePixels="True"/>
+          <layers:VisualsLayer x:Name="m_layerFuture" SnapsToDevicePixels="True"/>
+        </Grid>
+
+        <!-- Ticks layer -->
+        <layers:TicksLayer x:Name="m_layerTicks"
+                           Grid.Row="1"
+                           Background="Black"
+                           RenderOptions.EdgeMode="Aliased"
+                           RenderOptions.ClearTypeHint="Enabled"
+                           MouseLeftButtonDown="OnCanvasMouseLeftButtonDown"/>
+
+        <!-- Time cursor -->
+        <Canvas Grid.Row="0" Grid.RowSpan="2"
+                ClipToBounds="True">
+          <Thumb Name="m_thumb" 
+                 Width="10"
+                 Height="36"
+                 Canvas.Left="0"
+                 SnapsToDevicePixels="True"
+                 DragDelta="OnThumbCursorDragDelta"
+                 DragStarted="OnThumbCursorDragStarted"
+                 DragCompleted="OnThumbCursorDragCompleted">
+            <Thumb.Template>
+              <ControlTemplate>
+                <Grid x:Name="m_marker">
+                  <Border CornerRadius="2"
+                          BorderThickness="3"
+                          BorderBrush="DarkOrange"
+                          Background="Transparent"/>
+                </Grid>
+              </ControlTemplate>
+            </Thumb.Template>
+          </Thumb>
+        </Canvas>
+      </Grid>
+    </Border>
+
+    <!-- Scroll right button -->
+    <Button Grid.Column="2"
+            Click="OnButtonScrollRight"
+            Style="{StaticResource FlatButton}">
+      <Image Source="pack://application:,,,/ModuleSample;Component/Controls/Timeline/Resources/Pan right.png"
+             Width="16" Height="16"
+             HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Button>
+
+    <Grid Grid.Column="3">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <!-- Zoom in button -->
+      <Button Grid.Row="0"
+              Click="OnButtonZoomIn"
+              Style="{StaticResource FlatButton}"
+              MinHeight="0">
+        <Image Source="pack://application:,,,/ModuleSample;Component/Controls/Timeline/Resources/Plus.png"
+               Width="12" Height="12"
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      </Button>
+
+      <!-- Zoom out button -->
+      <Button Grid.Row="1"
+              Click="OnButtonZoomOut"
+              Style="{StaticResource FlatButton}"
+              MinHeight="0">
+        <Image Source="pack://application:,,,/ModuleSample;Component/Controls/Timeline/Resources/Minus.png"
+               Width="12" Height="12"
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      </Button>
+
+    </Grid>
+  </Grid>
+
+</UserControl>

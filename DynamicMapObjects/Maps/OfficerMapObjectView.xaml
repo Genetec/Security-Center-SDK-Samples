@@ -1,0 +1,11 @@
+﻿<maps:MapObjectView  x:Class="DynamicMapObjects.Maps.OfficerMapObjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:maps="clr-namespace:Genetec.Sdk.Workspace.Maps;assembly=Genetec.Sdk.Workspace"
+             Height="32" Width="32"
+             Margin="-16,-16,0,0"
+             MouseDown="OnOfficerMapObjectViewMouseDown" MouseMove="OnOfficerMapObjectViewMouseMove">
+
+  <Image Source="../Resources/Officer.png" />
+
+</maps:MapObjectView>

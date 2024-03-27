@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="RMModule.Notifications.ChatTrayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Name="ctl">
+  <!-- Resources -->
+  <UserControl.Resources>
+  </UserControl.Resources>
+
+  <!-- Body -->
+  <Grid Width="20" Height="20" Margin="2"
+        ToolTip="Click for more info on the Chat Module Sample"
+        MouseLeftButtonDown="OnMouseLeftButtonDown">
+
+    <Image Source="pack://application:,,,/RMModule;component/Resources/Chat_message.png" 
+           Width="16" Height="16"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           SnapsToDevicePixels="True"/>
+    <TextBlock Name="textBlock" Margin="5,0,0,0" Text="{Binding MessagesArchived, ElementName=ctl, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="14" Foreground="Red"/>
+  </Grid>
+</UserControl>
