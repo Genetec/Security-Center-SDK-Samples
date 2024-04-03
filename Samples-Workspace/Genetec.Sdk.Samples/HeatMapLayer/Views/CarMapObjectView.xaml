@@ -1,0 +1,8 @@
+﻿<maps:MapObjectView x:Class="HeatMapLayer.Views.CarMapObjectView"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:maps="clr-namespace:Genetec.Sdk.Workspace.Maps;assembly=Genetec.Sdk.Workspace"
+                    Height="30" Width="30">
+
+    <Image Source="../Resources/car.png" />
+</maps:MapObjectView>

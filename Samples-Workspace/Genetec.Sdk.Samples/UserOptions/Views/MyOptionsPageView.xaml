@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="UserOptions.Views.MyOptionsPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="8">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Style="{Styles {x:Static LabelStyles.Intro}}" Content="Maximum number of items" Margin="8" HorizontalAlignment="Right" />
+        <NumericUpDown Grid.Row="0" Grid.Column="1" Margin="8" HorizontalAlignment="Left" Value="{Binding NumOfItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Label Grid.Row="1" Grid.Column="0" Style="{Styles {x:Static LabelStyles.Intro}}" Content="Specific date" Margin="8" HorizontalAlignment="Right" />
+        <DateTimePicker Grid.Row="1" Grid.Column="1" Margin="8" HorizontalAlignment="Left" Value="{Binding DateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Label Grid.Row="2" Grid.Column="0" Style="{Styles {x:Static LabelStyles.Intro}}" Content="CheckBox" Margin="8" HorizontalAlignment="Right" />
+        <CheckBox Grid.Row="2" Grid.Column="1" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Label Grid.Row="3" Grid.Column="0" Style="{Styles {x:Static LabelStyles.Intro}}" Content="Display color" Margin="8" HorizontalAlignment="Right" />
+        <ColorPicker Grid.Row="3" Grid.Column="1" Margin="8" HorizontalAlignment="Left" Color="{Binding Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+</UserControl>

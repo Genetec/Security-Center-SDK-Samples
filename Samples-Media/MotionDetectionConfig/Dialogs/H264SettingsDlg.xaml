@@ -1,0 +1,133 @@
+﻿<Window x:Class="MotionDetectionConfig.Dialogs.H264SettingsDlg"
+        x:Name="ctl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Title="H264 advanced motion detection settings">
+
+  <Grid Margin="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <TextBlock Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Text="Preset:"/>
+
+    <ComboBox x:Name="m_cbPresets"
+              Grid.Row="0" Grid.Column="1"
+              Width="120"
+              HorizontalAlignment="Left" VerticalAlignment="Center"
+              Margin="8,0,0,0"
+              SelectionChanged="OnComboBoxPresetsSelectionChanged">
+      <ComboBoxItem x:Name="m_presetCustom"
+                    Content="Custom"/>
+      <ComboBoxItem x:Name="m_presetLuma"
+                    Content="Luma emphasis"/>
+      <ComboBoxItem x:Name="m_presetVector"
+                    Content="Vector emphasis"/>
+    </ComboBox>
+
+    <TextBlock Grid.Row="1" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Margin="0,10,0,0"
+               Text="Luma weight"/>
+
+    <StackPanel Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="8,10,0,0"
+                Orientation="Horizontal">
+
+      <TextBox Width="50"
+               VerticalAlignment="Center"
+               Text="{Binding ElementName=ctl, Path=LumaWeight, Mode=TwoWay}"/>
+
+      <TextBlock VerticalAlignment="Center"
+                 Margin="4,0,0,0"
+                 Text="(0 - 100)"/>
+    </StackPanel>
+
+    <TextBlock Grid.Row="2" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Margin="0,10,0,0"
+               Text="Chroma weight"/>
+
+    <StackPanel Grid.Row="2" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="8,10,0,0"
+                Orientation="Horizontal">
+
+      <TextBox Width="50"
+               VerticalAlignment="Center"
+               Text="{Binding ElementName=ctl, Path=ChromaWeight, Mode=TwoWay}"/>
+
+      <TextBlock VerticalAlignment="Center"
+                 Margin="4,0,0,0"
+                 Text="(0 - 100)"/>
+    </StackPanel>
+
+    <TextBlock Grid.Row="3" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Margin="0,10,0,0"
+               Text="Vector weight"/>
+
+    <StackPanel Grid.Row="3" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="8,10,0,0"
+                Orientation="Horizontal">
+
+      <TextBox Width="50"
+               VerticalAlignment="Center"
+               Text="{Binding ElementName=ctl, Path=VectorWeight, Mode=TwoWay}"/>
+
+      <TextBlock VerticalAlignment="Center"
+                 Margin="4,0,0,0"
+                 Text="(0 - 100)"/>
+    </StackPanel>
+
+    <TextBlock Grid.Row="4" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Margin="0,10,0,0"
+               Text="Macroblocks weight"/>
+
+    <StackPanel Grid.Row="4" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="8,10,0,0"
+                Orientation="Horizontal">
+
+      <TextBox Width="50"
+               VerticalAlignment="Center"
+               Text="{Binding ElementName=ctl, Path=MacroblockWeight, Mode=TwoWay}"/>
+
+      <TextBlock VerticalAlignment="Center"
+                 Margin="4,0,0,0"
+                 Text="(0 - 100)"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                HorizontalAlignment="Right"
+                Margin="0,12,0,0"
+                Orientation="Horizontal">
+
+      <Button Width="68"
+              Content="Cancel"
+              IsCancel="True"/>
+
+      <Button Width="68"
+              Margin="12,0,0,0"
+              Content="Ok"
+              IsDefault="True"
+              Click="OnButtonOkClicked"/>
+    </StackPanel>
+  </Grid>
+</Window>

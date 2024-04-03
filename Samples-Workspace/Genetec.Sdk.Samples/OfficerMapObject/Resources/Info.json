@@ -1,0 +1,12 @@
+{
+  "Name": "OfficerMapObject",
+  "Module": "OfficerMapObject.dll",
+  "Category": "Maps",
+  "Description": "This sample uses an outside service to get the GPS location of multiple items (ex: buses) to display them on the map.",
+  "Requirements": [ "Must have a Geographic map created." ],
+  "Instructions": [ "Open maps and select a map.", "Right click the mouse button and click on \"Add officer\".", "To remove an officer from the map, click on the officer icon in the map panel and click on any of the three ways of removing an officer." ],
+  "Result": "Officer object will be present on the map. Please note that the officer objects are not saved as the sample is meant to show objects that are saved in an external service and sent to be shown on the map.",
+  "Title": "Officer Map Object",
+  "SecurityCenter": true,
+  "ConfigTool": false
+}

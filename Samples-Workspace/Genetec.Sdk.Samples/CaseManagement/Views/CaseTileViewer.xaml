@@ -1,0 +1,6 @@
+﻿<UserControl x:Class="CaseManagement.Views.CaseTileViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <InkCanvas Name="m_inkCanvas" EditingMode="None" />
+</UserControl>

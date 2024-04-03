@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="MotionDetectionConfig.MotionDetectionZoneConfigurationCtl"
+             x:Name="ctl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:motionDetectionConfig="clr-namespace:MotionDetectionConfig"
+             xmlns:motionMap="clr-namespace:MotionDetectionConfig.MotionMap">
+
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    <motionDetectionConfig:BlockCountToStringConverter x:Key="BlockCountToStringConverter"/>
+    <system:String x:Key="ParenthesesStringFormat">({0})</system:String>
+  </UserControl.Resources>
+
+  <Grid Margin="10">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <motionMap:VideoMotionMapCtl x:Name="m_videoMotionMapCtl"
+                             Grid.Row="0"
+                             MinWidth="460"
+                             HorizontalAlignment="Left"
+                             AreIrregularZoneShapeSupported="{Binding ElementName=ctl, Path=AreIrregularZoneShapeSupported}"/>
+
+    <StackPanel Grid.Row="1"
+                HorizontalAlignment="Left"
+                Margin="0,10,0,0"
+                IsEnabled="{Binding ElementName=ctl, Path=IsMapConfigurationSupported}"
+                Orientation="Horizontal">
+
+      <ToggleButton x:Name="m_togglePen"
+                    Width="75"
+                    IsEnabled="{Binding ElementName=ctl, Path=AreIrregularZoneShapeSupported}"
+                    Content="Pen"
+                    Click="OnButtonPenClicked"/>
+
+      <ToggleButton x:Name="m_toggleRectangle"
+                    Width="75"
+                    Margin="2,0,0,0"
+                    Content="Rectangle"
+                    Click="OnButtonRectangleClicked"/>
+
+      <ToggleButton x:Name="m_toggleEraser"
+                    Width="75"
+                    Margin="2,0,0,0"
+                    IsEnabled="{Binding ElementName=ctl, Path=AreIrregularZoneShapeSupported}"
+                    Content="Eraser"
+                    Click="OnButtonEraserClicked"/>
+
+      <Button Width="75"
+              Margin="8,0,0,0"
+              Content="Fill"
+              Click="OnButtonFillClicked"/>
+
+      <Button Width="75"
+              Margin="2,0,0,0"
+              Content="Clear"
+              Click="OnButtonClearClicked"/>
+
+      <Button Width="75"
+              Margin="2,0,0,0"
+              IsEnabled="{Binding ElementName=ctl, Path=AreIrregularZoneShapeSupported}"
+              Content="Invert"
+              Click="OnButtonInvertClicked"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="2"
+                HorizontalAlignment="Left"
+                Margin="0,10,0,0"
+                Orientation="Horizontal">
+
+      <StackPanel Orientation="Vertical">
+
+        <StackPanel Visibility="{Binding ElementName=ctl, Path=IsMotionOnThresholdSupported, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Orientation="Horizontal">
+
+          <TextBlock VerticalAlignment="Center"
+                     Text="Motion on threshold:"/>
+
+          <TextBox Width="50"
+                   VerticalAlignment="Center"
+                   Margin="8,0,0,0"
+                   Text="{Binding ElementName=ctl, Path=MotionOnThreshold, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+
+          <TextBlock VerticalAlignment="Center"
+                     Margin="2,0,0,0"
+                     Text="%"/>
+
+          <TextBlock VerticalAlignment="Center"
+                     Margin="4,0,0,0"
+                     Text="{Binding ElementName=ctl, Path=MotionOnThresholdBlocks, Converter={StaticResource BlockCountToStringConverter}, StringFormat={StaticResource ParenthesesStringFormat}}"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,10,0,0"
+                    Visibility="{Binding ElementName=ctl, Path=IsMotionOffThresholdSupported, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Orientation="Horizontal">
+
+          <TextBlock VerticalAlignment="Center"
+                     Text="Motion off threshold:"/>
+
+          <TextBox Width="50"
+                   VerticalAlignment="Center"
+                   Margin="8,0,0,0"
+                   Text="{Binding ElementName=ctl, Path=MotionOffThreshold, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+
+          <TextBlock VerticalAlignment="Center"
+                     Margin="2,0,0,0"
+                     Text="%"/>
+
+          <TextBlock VerticalAlignment="Center"
+                     Margin="4,0,0,0"
+                     Text="{Binding ElementName=ctl, Path=MotionOffThresholdBlocks, Converter={StaticResource BlockCountToStringConverter}, StringFormat={StaticResource ParenthesesStringFormat}}"/>
+        </StackPanel>
+      </StackPanel>
+
+      <Button Width="120"
+              HorizontalAlignment="Left" VerticalAlignment="Center"
+              Margin="24,0,0,0"
+              Content="Motion events..."
+              Click="OnButtonMotionEventsClicked"/>
+    </StackPanel>
+  </Grid>
+</UserControl>

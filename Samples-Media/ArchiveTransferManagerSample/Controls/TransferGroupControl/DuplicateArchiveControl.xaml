@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="ArchiveTransferManagerSample.DuplicateArchiveControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ArchiveTransferManagerSample.Controls"
+             mc:Ignorable="d"
+             d:DataContext="DuplicateArchiveViewModel">
+    <UserControl.Resources>
+        <controls:RadioButtonToBooleanConverter x:Key="BoolConverter" />
+    </UserControl.Resources>
+    <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+
+
+        
+
+        <GroupBox Header="Sources" HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Grid.Row="0" Grid.ColumnSpan="5" Grid.Column="0">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ListBox HorizontalAlignment="Left" MinHeight="100" VerticalAlignment="Top" MinWidth="400"
+                         ItemsSource="{Binding CamerasSources}" SelectedItem="{Binding SelectedCameraSource}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding EntityIcon}" Margin="2" />
+                                <TextBlock Text="{Binding EntityName}" Margin="2" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,5,0,0">
+                    <Button Command="{Binding AddCameraButtonCommand}" Margin="5">Add</Button>
+                    <Button Command="{Binding RemoveCameraButtonCommand}" Margin="5">Remove</Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <Label Content="Destination" HorizontalAlignment="Left" VerticalAlignment="top" Grid.Column="0" Grid.Row="1" />
+        <ComboBox Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" Height="23" MinWidth="200"
+                  ItemsSource="{Binding ArchiverSources}"
+                  SelectedItem="{Binding Path=SelectedArchiverSource}" Grid.ColumnSpan="3">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path=EntityIcon}" Margin="2" />
+                        <TextBlock Text="{Binding Path=EntityName}" Margin="2" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <GroupBox Header="Coverage" HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Grid.Row="3" Grid.ColumnSpan="5" Grid.Column="0">
+            <StackPanel HorizontalAlignment="Left">
+                <RadioButton Content="Everything since last transfer" GroupName="Coverage"
+                             IsChecked="{Binding IsEverythingSelected}" />
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Content="Everything since last transfer up to " Height="14" GroupName="Coverage" />
+                    <TextBox MinWidth="30" Text="{Binding Days, UpdateSourceTrigger=PropertyChanged}" />
+                    <Label>days</Label>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Data" HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Grid.Row="4" Grid.ColumnSpan="5" Grid.Column="0">
+            <StackPanel>
+                <RadioButton Content="All" GroupName="Data" IsChecked="True" />
+                <StackPanel Orientation="Horizontal">
+                    <Label>Simultaneous transfer</Label>
+                    <TextBox MinWidth="30" Text="{Binding SimultaneousTransfers, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <Button MinWidth="100" Height="30" Command="{Binding SaveManualDuplicateButtonCommand}" Grid.Row="5"
+                Grid.Column="0">
+            Start transfer
+        </Button>
+    </Grid>
+</UserControl>

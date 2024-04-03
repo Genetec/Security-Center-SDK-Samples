@@ -1,0 +1,365 @@
+﻿<Window x:Class="MediaSdkSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:media="clr-namespace:Genetec.Sdk.Media;assembly=Genetec.Sdk.Media"
+        xmlns:converters="clr-namespace:MediaSdkSample.Converters"
+        Title="Genetec SDK Media Player Sample" Height="775" Width="750">
+  <Window.Resources>
+    <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+  </Window.Resources>
+  <Grid Margin="5,25,5,-15" Width="Auto">
+    <StackPanel Orientation="Vertical" Margin="0,-28,0,11.5">
+      <Border Width="700" Margin="0,15,0,5" CornerRadius="5" BorderThickness="2"
+              BorderBrush="LightGray" Height="499">
+        <StackPanel Margin="5,0,0,0" Orientation="Vertical">
+          <StackPanel Orientation="Horizontal">
+            <GroupBox Header="Directory Information" Margin="5,5,5,5" Name="m_directoryInfo" Height="Auto" Width="364">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Content="Directory:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="0" Name="m_directory" Text="{Binding Path=Directory}" Margin="5">
+                  <TextBox.Style>
+                    <Style>
+                      <Setter Property="Control.IsEnabled" Value="True" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsSdkEngineConnected}" Value="true">
+                          <Setter Property="Control.IsEnabled" Value="False" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </TextBox.Style>
+                </TextBox>
+                <Label Content="User Name:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="1" Name="m_userName" Text="{Binding Path=Username}" Margin="5">
+                  <TextBox.Style>
+                    <Style>
+                      <Setter Property="Control.IsEnabled" Value="True" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=m_checkboxWindowsCredentials, Path=IsChecked}"
+                                     Value="true">
+                          <Setter Property="Control.IsEnabled" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsSdkEngineConnected}" Value="true">
+                          <Setter Property="Control.IsEnabled" Value="False" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </TextBox.Style>
+                </TextBox>
+                <Label Content="Password:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" />
+                <PasswordBox Grid.Column="1" Grid.Row="2" Name="m_password" Margin="5">
+                  <PasswordBox.Style>
+                    <Style>
+                      <Setter Property="Control.IsEnabled" Value="True" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=m_checkboxWindowsCredentials, Path=IsChecked}"
+                                     Value="true">
+                          <Setter Property="Control.IsEnabled" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsSdkEngineConnected}" Value="true">
+                          <Setter Property="Control.IsEnabled" Value="False" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </PasswordBox.Style>
+                </PasswordBox>
+                <WrapPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"
+                           Name="m_actionWrapPanel">
+                  <Button Click="OnButtonConnectClick" Content="{Binding Path=ConnectContent}" Name="m_connect"
+                          HorizontalAlignment="Right" />
+                  <CheckBox Name="m_checkboxWindowsCredentials" Content="Use Windows credentials"
+                            VerticalAlignment="Center" Margin="2"
+                            IsChecked="{Binding Path=WindowsCredentials}"
+                            IsEnabled="{Binding Path=IsSdkEngineConnected, Converter={StaticResource InverseBooleanConverter}}" />
+                </WrapPanel>
+              </Grid>
+            </GroupBox>
+            <GroupBox Header="Network info" x:Name="m_networkInfo" Height="Auto" Margin="5,5,5,5" Width="300">
+              <Grid Height="135">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Network card:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"
+                       VerticalContentAlignment="Center" />
+                <ComboBox Grid.Column="1" Grid.Row="0" Name="m_networkCardComboBox" Width="Auto" Height="25"
+                          IsEnabled="{Binding Path=IsSdkEngineConnected}" VerticalContentAlignment="Center"
+                          ItemsSource="{Binding Path=NetworkCardItems}"
+                          SelectedIndex="{Binding Path=NetworkCardSelectedIndex}" />
+                <Label Content="Network :" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"
+                       VerticalContentAlignment="Center" />
+                <ComboBox Grid.Column="1" Grid.Row="1" x:Name="m_networkComboBox" Width="Auto" Height="25"
+                          IsEnabled="{Binding Path=IsSdkEngineConnected}" VerticalContentAlignment="Center"
+                          ItemsSource="{Binding Path=NetworkItems}" SelectedIndex="{Binding Path=NetworkSelectedIndex}" />
+              </Grid>
+            </GroupBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Margin="0,5,0,0" RenderTransformOrigin="0.498,0.083">
+            <Label Margin="5,5" Content="Camera:" />
+            <ComboBox Margin="5,5" Width="410" Name="m_cameraGuids" IsEnabled="{Binding Path=IsSdkEngineConnected}"
+                      ItemsSource="{Binding Path=CameraGuidsItems}"
+                      SelectedIndex="{Binding Path=CameraGuidsSelectedIndex}" />
+            <Button Margin="5,5" Name="m_startButton" Click="OnButtonStartClick" Content="Start playing">
+              <Button.Style>
+                <Style>
+                  <Setter Property="Control.IsEnabled" Value="false" />
+                  <Style.Triggers>
+                    <MultiDataTrigger>
+                      <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=IsSdkEngineConnected}" Value="true" />
+                        <Condition Binding="{Binding Path=CurrentPlayingMode}" Value="NotPlaying" />
+                      </MultiDataTrigger.Conditions>
+                      <Setter Property="Control.IsEnabled" Value="true" />
+                    </MultiDataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
+            </Button>
+            <Button Margin="5,5" Name="m_stopButton" Click="OnButtonStopClick" Content="Stop playing">
+              <Button.Style>
+                <Style>
+                  <Setter Property="Control.IsEnabled" Value="False" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=CurrentPlayingMode}" Value="Camera">
+                      <Setter Property="Control.IsEnabled" Value="true" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
+            </Button>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+            <Label Margin="5,5" Content="File to play:" HorizontalAlignment="Right" />
+            <TextBox Margin="5,5" Name="m_filePath" Text="{Binding Path=FilePath}" Width="258" />
+            <Button Margin="5,5" Name="m_fileBrowseButton" Click="OnButtonFileBrowseClick" Content="Browse file" />
+            <Button Margin="5,5" Name="m_fileStartButton" Click="OnButtonFileStartClick" Content="Start playing">
+              <Button.Style>
+                <Style>
+                  <Setter Property="Control.IsEnabled" Value="False" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=CurrentPlayingMode}" Value="NotPlaying">
+                      <Setter Property="Control.IsEnabled" Value="true" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
+            </Button>
+            <Button Margin="5,5" Name="m_fileStopButton" Click="OnButtonFileStopClick" Content="Stop playing">
+              <Button.Style>
+                <Style>
+                  <Setter Property="Control.IsEnabled" Value="False" />
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=CurrentPlayingMode}" Value="Video">
+                      <Setter Property="Control.IsEnabled" Value="true" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
+            </Button>
+          </StackPanel>
+          <Grid Height="271">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid Column="0">
+              <media:MediaPlayer Name="m_mediaPlayer" />
+              <Border Name="m_lastFramReceivedBorder" VerticalAlignment="Top" HorizontalAlignment="Left"
+                      Background="#303030" Opacity="0.55" Margin="40,10" CornerRadius="4"
+                      Visibility="{Binding Path=IsMediaStarted, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Label Margin="4" Name="m_lastFrameReceivedLabel" Foreground="White" FontWeight="Bold" Content="{Binding Path=LastFrameReceived}" />
+              </Border>
+            </Grid>
+            <Grid Column="1" MinWidth="300">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+              </Grid.ColumnDefinitions>
+              <Label FontWeight="SemiBold" HorizontalContentAlignment="Right" Content="Frame rate:" Grid.Row="0"
+                     Grid.Column="0" />
+              <Label Name="m_frameRateLabel" Grid.Row="0" Grid.Column="1" Content="{Binding Path=FrameRate}"/>
+              <Label FontWeight="SemiBold" HorizontalContentAlignment="Right" Content="Bit rate:" Grid.Row="1"
+                     Grid.Column="0" />
+              <Label Name="m_bitRateLabel" Grid.Row="1" Grid.Column="1" Content="{Binding Path=BitRate}" />
+              <Label FontWeight="SemiBold" HorizontalContentAlignment="Right" Content="Video dimensions:" Grid.Row="2"
+                     Grid.Column="0" />
+              <Label Name="m_videoDimensionsLabel" Grid.Row="2" Grid.Column="1" Content="{Binding Path=VideoDimensions}"/>
+              <Label FontWeight="SemiBold" HorizontalContentAlignment="Right" Content="RTP packets lost:" Grid.Row="3"
+                     Grid.Column="0" />
+              <Label Name="m_rtpPacketsLostLabel" Grid.Row="3" Grid.Column="1" Content="{Binding Path=RtpPacketsLost}" />
+              <Label FontWeight="SemiBold" HorizontalContentAlignment="Right" Content="IP source:" Grid.Row="4"
+                     Grid.Column="0" />
+              <Label Name="m_ipSourceLabel" Grid.Row="4" Grid.Column="1" Content="{Binding Path=IpSource}"/>
+              <Label FontWeight="SemiBold" HorizontalContentAlignment="Right" Content="Current player state:"
+                     Grid.Row="5" Grid.Column="0" />
+              <Label Name="m_playerStateLabel" Grid.Row="5" Grid.Column="1" Content="{Binding Path=PlayerCurrentState}" />
+              <Label FontWeight="SemiBold" HorizontalContentAlignment="Right" Content="Started since:" Grid.Row="6"
+                     Grid.Column="0" />
+              <Label Name="m_startedSinceLabel" Grid.Row="6" Grid.Column="1" Content="{Binding Path=StartedSince}"/>
+              <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,5,20,5"
+                      Content="Toggle special overlays" VerticalAlignment="Bottom" Click="OnButtonToggleSpecialOverlaysClick" />
+            </Grid>
+          </Grid>
+        </StackPanel>
+      </Border>
+      <Border Width="700" Margin="0,0,0,5" CornerRadius="5" BorderThickness="2"
+              BorderBrush="LightGray">
+        <StackPanel Orientation="Vertical">
+          <Label Margin="5,0,0,0" FontWeight="Bold" Content="Playback support" />
+          <StackPanel Orientation="Horizontal">
+            <Label Content="Play speed:" Margin="5,5" />
+            <ComboBox Name="m_playSpeedComboBox" Width="50" Margin="5,5" SelectionChanged="OnComboboxPlaySpeedChanged"
+                      SelectedIndex="{Binding Path=PlaySpeedSelectedIndex}">
+              <ComboBox.Style>
+                <Style>
+                  <Setter Property="Control.IsEnabled" Value="false" />
+                  <Style.Triggers>
+                    <MultiDataTrigger>
+                      <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=IsMediaStarted}" Value="true" />
+                        <Condition Binding="{Binding Path=IsLivePlay}" Value="false" />
+                      </MultiDataTrigger.Conditions>
+                      <Setter Property="Control.IsEnabled" Value="true" />
+                    </MultiDataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </ComboBox.Style>
+              <ComboBoxItem Tag="18">1/8X</ComboBoxItem>
+              <ComboBoxItem Tag="14">1/4X</ComboBoxItem>
+              <ComboBoxItem Tag="13">1/3X</ComboBoxItem>
+              <ComboBoxItem Tag="12">1/2X</ComboBoxItem>
+              <ComboBoxItem Tag="1">1X</ComboBoxItem>
+              <ComboBoxItem Tag="2">2X</ComboBoxItem>
+              <ComboBoxItem Tag="4">4X</ComboBoxItem>
+              <ComboBoxItem Tag="6">6X</ComboBoxItem>
+              <ComboBoxItem Tag="8">8X</ComboBoxItem>
+              <ComboBoxItem Tag="10">10X</ComboBoxItem>
+              <ComboBoxItem Tag="20">20X</ComboBoxItem>
+              <ComboBoxItem Tag="40">40X</ComboBoxItem>
+              <ComboBoxItem Tag="100">100X</ComboBoxItem>
+            </ComboBox>
+            <Button Margin="5,5" Content="Seek -1 minute" Name="m_seekBack1MinButton" Click="OnButtonSeekBackOneMinClick"
+                    IsEnabled="{Binding IsMediaStarted}" />
+            <Button Margin="5,5" Width="25" Content="&lt;" x:Name="m_previousFrameButton" Click="OnButtonPreviousFrameClick"
+            	IsEnabled="{Binding IsMediaStarted}" RenderTransformOrigin="-1.56,0.615" />
+            <Button Margin="5,5" Content="Pause" Name="m_pauseButton" Click="OnButtonPauseClick">
+              <Button.Style>
+                <Style>
+                  <Setter Property="Control.IsEnabled" Value="false" />
+                  <Style.Triggers>
+                    <MultiDataTrigger>
+                      <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=IsPaused}" Value="false" />
+                        <Condition Binding="{Binding Path=IsMediaStarted}" Value="true" />
+                      </MultiDataTrigger.Conditions>
+                      <Setter Property="Control.IsEnabled" Value="true" />
+                    </MultiDataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
+            </Button>
+            <Button Margin="5,5" Content="Play" x:Name="m_playButton" Click="OnButtonPlayClick">
+              <Button.Style>
+                <Style>
+                  <Setter Property="Button.IsEnabled" Value="false" />
+                  <Style.Triggers>
+                    <MultiDataTrigger>
+                      <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding IsMediaStarted}" Value="true" />
+                        <Condition Binding="{Binding IsEnabled, ElementName=m_pauseButton}" Value="false" />
+                      </MultiDataTrigger.Conditions>
+                      <Setter Property="Button.IsEnabled" Value="true" />
+                    </MultiDataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
+            </Button>
+            <Button Margin="5,5" Width="25" Content="&gt;" x:Name="m_nextFrameButton" Click="OnButtonNextFrameClick"
+            	IsEnabled="{Binding IsMediaStarted}" />
+            <Button Margin="5,5" Content="Rewind" Name="m_rewindButton" Click="OnButtonRewindClick"
+                    IsEnabled="{Binding Path=IsMediaStarted}" />
+            <Button Margin="5,5" Content="Switch to live" Name="m_switchToLiveButton" Click="OnButtonSwitchToLiveClick">
+              <Button.Style>
+                <Style>
+                  <Setter Property="Control.IsEnabled" Value="false" />
+                  <Style.Triggers>
+                    <MultiDataTrigger>
+                      <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=IsMediaStarted}" Value="true" />
+                        <Condition Binding="{Binding Path=IsLivePlay}" Value="false" />
+                        <Condition Binding="{Binding Path=CurrentPlayingMode}" Value="Camera" />
+                      </MultiDataTrigger.Conditions>
+                      <Setter Property="Control.IsEnabled" Value="true" />
+                    </MultiDataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
+            </Button>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+      <Border Width="700" Margin="0,0,0,5" CornerRadius="5" BorderThickness="2"
+              BorderBrush="LightGray">
+        <StackPanel Orientation="Vertical">
+          <Label Margin="5,0,0,0" FontWeight="Bold" Content="Digital zoom support" />
+          <StackPanel Orientation="Horizontal">
+            <Label Margin="5,5" Content="Left:" />
+            <TextBox Margin="5,5" Width="50" Name="m_leftDigitalZoomTextBox" IsEnabled="{Binding Path=IsMediaStarted}" Text="{Binding Path=LeftDigitalZoom}"/>
+            <Label Margin="5,5" Content="Top:" />
+            <TextBox Margin="5,5" Width="50" Name="m_topDigitalZoomTextBox" IsEnabled="{Binding Path=IsMediaStarted}" Text="{Binding Path=TopDigitalZoom}"/>
+            <Label Margin="5,5" Content="Width:" />
+            <TextBox Margin="5,5" Width="50" Name="m_widthDigitalZoomTextBox" IsEnabled="{Binding Path=IsMediaStarted}" Text="{Binding Path=WidthDigitalZoom}"/>
+            <Label Margin="5,5" Content="Height:" />
+            <TextBox Margin="5,5" Width="50" Name="m_heightDigitalZoomTextBox" IsEnabled="{Binding Path=IsMediaStarted}" Text="{Binding Path=HeightDigitalZoom}"/>
+            <Button Margin="5,5" Name="m_setDigitalZoomButton" Content="Set" Click="OnButtonSetDigitalZoomClick"
+                    IsEnabled="{Binding Path=IsMediaStarted}" />
+            <Button Margin="5,5" Name="m_clearDigitalZoomButton" Content="Clear" Click="OnButtonClearDigitalZoomnClick"
+                    IsEnabled="{Binding Path=IsMediaStarted}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+      <Border Width="700" Margin="0,0,0,5" CornerRadius="5" BorderThickness="2"
+              BorderBrush="LightGray">
+        <StackPanel Orientation="Vertical">
+          <Label Margin="5,0,0,0" FontWeight="Bold" Content="Snapshot support" />
+          <StackPanel Margin="5,5" Orientation="Horizontal">
+            <CheckBox Margin="5,5" Name="m_writeDateTime" Content="Write Date/Time"
+                      IsChecked="{Binding Path=WriteDateTime}" IsEnabled="{Binding Path=IsMediaStarted}" />
+            <CheckBox Margin="5,5" Name="m_applyZoomCheckBox" Content="Apply zoom"
+                      IsChecked="{Binding Path=ApplyZoom}" IsEnabled="{Binding Path=IsMediaStarted}" />
+            <Label Margin="5,0" Content="Additionnal content: " />
+            <TextBox Margin="5,0" Width="235" Name="m_additionnalContentTextBox"
+                     IsEnabled="{Binding Path=IsMediaStarted}" Text="{Binding Path=AdditionnalContent}" />
+            <Button Margin="5,0" Content="Snapshot" Name="m_snapshotButton" Click="OnButtonSnapshotClick"
+                    IsEnabled="{Binding IsMediaStarted}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </Grid>
+</Window>

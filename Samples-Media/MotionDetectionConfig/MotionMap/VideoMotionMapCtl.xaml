@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="MotionDetectionConfig.MotionMap.VideoMotionMapCtl"
+             x:Name="ctl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:motionMap="clr-namespace:MotionDetectionConfig.MotionMap">
+  <Grid>
+    <ContentPresenter x:Name="m_videoHost"
+                      SizeChanged="OnVideoHostSizeChanged"/>
+
+    <motionMap:VisualMotionMap x:Name="m_visualMotionMap"/>
+  </Grid>
+</UserControl>

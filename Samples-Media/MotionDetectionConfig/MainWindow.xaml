@@ -1,0 +1,152 @@
+﻿<Window x:Class="MotionDetectionConfig.MainWindow"
+        x:Name="ctl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:MotionDetectionConfig.Converters"
+        Title="Motion detection configuration sample"
+        Width="1280" MinWidth="1024" Height="1024" MinHeight="768">
+
+  <Window.Resources>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    <converters:IsNullToBooleanConverter x:Key="IsNotNullToBooleanConverter" IsInverted="True" />
+    <converters:IsNullToVisibilityConverter x:Key="IsNotNullToVisibilityConverter" IsInverted="True" />
+  </Window.Resources>
+
+  <Grid Margin="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0"
+          FocusManager.FocusedElement="{Binding ElementName=m_tbDirectory}">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <TextBlock Grid.Row="0" Grid.Column="0"
+                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                 IsEnabled="{Binding ElementName=ctl, Path=IsLoggedOn, Converter={StaticResource InverseBooleanConverter}}"
+                 Text="Directory:" />
+
+      <TextBox x:Name="m_tbDirectory"
+               Grid.Row="0" Grid.Column="1"
+               MinWidth="100"
+               HorizontalAlignment="Left" VerticalAlignment="Center"
+               Margin="8,0,0,0"
+               IsEnabled="{Binding ElementName=ctl, Path=IsLoggedOn, Converter={StaticResource InverseBooleanConverter}}" />
+
+      <TextBlock Grid.Row="1" Grid.Column="0"
+                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                 Margin="0,10,0,0"
+                 IsEnabled="{Binding ElementName=ctl, Path=IsLoggedOn, Converter={StaticResource InverseBooleanConverter}}"
+                 Text="Username:" />
+
+      <TextBox x:Name="m_tbUsername"
+               Grid.Row="1" Grid.Column="1"
+               MinWidth="100"
+               HorizontalAlignment="Left" VerticalAlignment="Center"
+               Text="admin"
+               Margin="8,10,0,0"
+               IsEnabled="{Binding ElementName=ctl, Path=IsLoggedOn, Converter={StaticResource InverseBooleanConverter}}" />
+
+      <TextBlock Grid.Row="2" Grid.Column="0"
+                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                 Margin="0,10,0,0"
+                 IsEnabled="{Binding ElementName=ctl, Path=IsLoggedOn, Converter={StaticResource InverseBooleanConverter}}"
+                 Text="Password:" />
+
+      <PasswordBox x:Name="m_tbPassword"
+                   Grid.Row="2" Grid.Column="1"
+                   MinWidth="100"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Margin="8,10,0,0"
+                   IsEnabled="{Binding ElementName=ctl, Path=IsLoggedOn, Converter={StaticResource InverseBooleanConverter}}" />
+
+      <Button x:Name="m_btnConnection"
+              Grid.Row="3" Grid.Column="1"
+              Width="120"
+              HorizontalAlignment="Left"
+              Margin="8,12,0,0"
+              Content="Connect"
+              Click="OnButtonConnectionClick" />
+    </Grid>
+
+    <Separator Grid.Row="1"
+               Margin="0,10,0,0" />
+
+    <StackPanel Grid.Row="2"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="8,10,0,0"
+                Visibility="{Binding ElementName=ctl, Path=IsLoggedOn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Orientation="Horizontal">
+
+      <TextBlock VerticalAlignment="Center"
+                 Text="Camera (Logical Id):" />
+
+      <TextBox x:Name="m_tbCameraId"
+               Width="50"
+               VerticalAlignment="Center"
+               Margin="8,0,0,0" />
+
+      <Button Width="120"
+              VerticalAlignment="Center"
+              Margin="12,0,0,0"
+              Content="Load configuration"
+              Click="OnButtonUpdateCameraClick" />
+
+      <TextBlock VerticalAlignment="Center"
+                 Margin="8,0,0,0"
+                 FontWeight="Bold">
+        <TextBlock.Text>
+          <Binding ElementName="ctl" Path="CurrentCamera.Name" StringFormat="({0})" />
+        </TextBlock.Text>
+      </TextBlock>
+    </StackPanel>
+
+    <TabControl x:Name="m_tabControl"
+                Grid.Row="3"
+                Margin="0,10,0,0"
+                Visibility="{Binding ElementName=ctl, Path=CurrentCamera, Converter={StaticResource IsNotNullToVisibilityConverter}}"
+                SelectionChanged="OnTabControlSelectionChanged" />
+
+    <StackPanel Grid.Row="4"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="0,12,0,0"
+                Visibility="{Binding ElementName=ctl, Path=CurrentCamera, Converter={StaticResource IsNotNullToVisibilityConverter}}"
+                Orientation="Horizontal">
+
+      <Button Width="120"
+              VerticalAlignment="Center"
+              Content="Add schedule..."
+              Click="OnButtonAddScheduleClick" />
+
+      <Button Width="120"
+              VerticalAlignment="Center"
+              Margin="12,0,0,0"
+              IsEnabled="{Binding ElementName=ctl, Path=SelectedConfigurationCtl, Converter={StaticResource IsNotNullToBooleanConverter}}"
+              Content="Remove schedule"
+              Click="OnButtonRemoveScheduleClick" />
+    </StackPanel>
+
+    <Button Grid.Row="5"
+            Width="120"
+            HorizontalAlignment="Right"
+            Margin="0,12,0,0"
+            Visibility="{Binding ElementName=ctl, Path=CurrentCamera, Converter={StaticResource IsNotNullToVisibilityConverter}}"
+            Content="Save configuration"
+            Click="OnButtonSaveClick" />
+  </Grid>
+</Window>

@@ -1,0 +1,113 @@
+﻿<Window x:Class="VideoViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:VideoViewer.Converters"
+        xmlns:tile="clr-namespace:VideoViewer"
+        Title="VideoViewer"
+        Height="731.984"
+        Width="1048.285" KeyDown="OnWindowKeyDown" MouseUp="OnWindowMouseUp">
+
+  <Window.Resources>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+  </Window.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="3*" />
+      <ColumnDefinition Width="994*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto" />
+      <RowDefinition Height="auto" MinHeight="4" />
+      <RowDefinition Height="auto" MinHeight="26" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+
+    <DockPanel Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Margin="11,6,2,14" Width="981"
+               Grid.RowSpan="2" Visibility="{Binding Path=IsSdkEngineConnected, Converter={StaticResource InverseBooleanToVisibilityConverter}}" >
+      <Label Name="labelDirectory" Content="Directory" Margin="2" />
+      <TextBox Name="textboxDirectory" Text="localhost" Width="100" Margin="2" VerticalContentAlignment="Center"   />
+      <Label Name="labelUsername" Content="Username" Margin="2" />
+      <TextBox Name="textboxUsername" Text="admin" Width="100" Margin="2" VerticalContentAlignment="Center"
+               IsEnabled="{Binding ElementName = checkboxWindowsCredentials, Path=IsChecked, Converter={StaticResource InverseBooleanConverter}}"
+               />
+      <Label Name="labelPassword" Content="Password" Margin="2"  />
+      <PasswordBox Name="passwordBox" Width="100" Margin="2" VerticalContentAlignment="Center"
+                   IsEnabled="{Binding ElementName = checkboxWindowsCredentials, Path=IsChecked, Converter={StaticResource InverseBooleanConverter}}"
+                    />
+      <CheckBox Name="checkboxWindowsCredentials" Content="Use Windows credentials" VerticalAlignment="Center"
+                Margin="2"  />
+            <Button Name="btnLogon" Width="75" Margin="2" HorizontalAlignment="Left" DockPanel.Dock="Left" Content="LogOn"
+              Click="OnButtonLogonClick"  />
+      </DockPanel>
+    <DockPanel Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1" Margin="11,6,2,14" Width="981"
+               Grid.RowSpan="2"  Visibility="{Binding Path=IsSdkEngineConnected, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <Button Name="btnLogOff" Width="75" Margin="2" Content="LogOff" HorizontalAlignment="Right"
+                DockPanel.Dock="Right" Click="OnButtonLogOffClick"/>
+        <CheckBox Name="checkboxCloseStreams" Content="Close streams on logoff" IsChecked="True"
+                  VerticalAlignment="Center" DockPanel.Dock="Right" Margin="2"/>
+        <CheckBox Name="checkboxEnableHardwareAcceleration" Content="Enable Hardware Acceleration" IsChecked="True"
+                  VerticalAlignment="Center" DockPanel.Dock="Left"  Click="OnCheckBoxHardwareAccelerationChanged" IsEnabled="{Binding Path=IsAtLeastOneTilePlaying, Converter={StaticResource InverseBooleanConverter}}"/>
+   </DockPanel>
+    <Separator Grid.Row="2" Background="Black" Margin="0,25,-4,0" Grid.ColumnSpan="2" />
+    <DockPanel Grid.Row="3" Grid.ColumnSpan="2">
+      <tile:EntityTree x:Name="tree" Width="242" />
+      <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="2">
+          <Button Name="buttonToggle" Width="125" Margin="2" Content="{Binding Path=TogglePlayback}"
+                  DockPanel.Dock="Right" HorizontalAlignment="Right" Click="OnButtonToggleClick" IsEnabled="{Binding IsSdkEngineConnected}" />
+          <Button Name="buttonOverlay" Width="100" Margin="2" Content="{Binding Path=OverlayName}"
+                  DockPanel.Dock="Left" HorizontalAlignment="Left" Click="OnButtonToggleOverlayClick" IsEnabled="{Binding IsSdkEngineConnected}" />
+          <StackPanel Name="playbackPanel" Orientation="Horizontal" HorizontalAlignment="Center"
+                      Visibility="{Binding Path=IsInPlayback, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Button Name="buttonRev" Width="35" Margin="2" Content="REV" Click="OnButtonReverseClick" />
+            <Button Name="buttonPlay" Width="45" Margin="2" Content="{Binding Path=PlayPause}" Click="OnButtonPlayClick" />
+            <Button Name="buttonFf" Width="35" Margin="2" Content="FF" Click="OnButtonFfClick" />
+            <Label Content="Play speed:" Margin="5,5" />
+            <ComboBox Name="playSpeedComboBox" Width="60" Margin="5,5" SelectionChanged="OnComboBoxPlaySpeedChanged">
+              <ComboBoxItem Tag="18">1/8X</ComboBoxItem>
+              <ComboBoxItem Tag="14">1/4X</ComboBoxItem>
+              <ComboBoxItem Tag="13">1/3X</ComboBoxItem>
+              <ComboBoxItem Tag="12">1/2X</ComboBoxItem>
+              <ComboBoxItem Tag="1" IsSelected="True">1X</ComboBoxItem>
+              <ComboBoxItem Tag="2">2X</ComboBoxItem>
+              <ComboBoxItem Tag="4">4X</ComboBoxItem>
+              <ComboBoxItem Tag="6">6X</ComboBoxItem>
+              <ComboBoxItem Tag="8">8X</ComboBoxItem>
+              <ComboBoxItem Tag="10">10X</ComboBoxItem>
+              <ComboBoxItem Tag="20">20X</ComboBoxItem>
+              <ComboBoxItem Tag="40">40X</ComboBoxItem>
+              <ComboBoxItem Tag="100">100X</ComboBoxItem>
+            </ComboBox>
+            <Border Name="borderTimestamp" Background="#303030" Opacity="0.55" CornerRadius="1" Margin="2">
+              <Label Margin="2" Name="labelTimestamp" Content="{Binding Path=TimeStamp}" Foreground="White"
+                     FontWeight="Bold" />
+            </Border>
+          </StackPanel>
+        </DockPanel>
+
+        <tile:Tile Grid.Row="1" Grid.Column="0" x:Name="tile1" MouseDown="OnTileMouseDown" MouseMove="OnTileMouseMove"
+                   Drop="OnTileDrop" AllowDrop="True" DragOver="OnTileDragOver" BorderBrush="Black" BorderThickness="2" />
+        <tile:Tile Grid.Row="1" Grid.Column="1" x:Name="tile2" MouseDown="OnTileMouseDown" MouseMove="OnTileMouseMove"
+                   Drop="OnTileDrop" AllowDrop="True" DragOver="OnTileDragOver" BorderBrush="Black" BorderThickness="2" />
+        <tile:Tile Grid.Row="2" Grid.Column="0" x:Name="tile3" MouseDown="OnTileMouseDown" MouseMove="OnTileMouseMove"
+                   Drop="OnTileDrop" AllowDrop="True" DragOver="OnTileDragOver" BorderBrush="Black" BorderThickness="2" />
+        <tile:Tile Grid.Row="2" Grid.Column="1" x:Name="tile4" MouseDown="OnTileMouseDown" MouseMove="OnTileMouseMove"
+                   Drop="OnTileDrop" AllowDrop="True" DragOver="OnTileDragOver" BorderBrush="Black" BorderThickness="2" />
+
+
+      </Grid>
+    </DockPanel>
+  </Grid>
+</Window>

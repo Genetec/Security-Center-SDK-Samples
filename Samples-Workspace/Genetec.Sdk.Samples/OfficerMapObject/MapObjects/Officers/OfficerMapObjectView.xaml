@@ -1,0 +1,14 @@
+﻿<maps:MapObjectView  x:Class="OfficerMapObject.MapObjects.Officers.OfficerMapObjectView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:maps="clr-namespace:Genetec.Sdk.Workspace.Maps;assembly=Genetec.Sdk.Workspace"
+                     Height="32" Width="32"
+                     Margin="-16,-16,0,0">
+
+    <Image Source="pack://application:,,,/OfficerMapObject;Component/Resources/Officer.png" Name="OfficerImage" PreviewMouseRightButtonDown="OnImagePreviewMouseRightButtonDown">
+        <Image.ToolTip>
+            <TextBlock FontWeight="Bold" Text="Officer"/>
+        </Image.ToolTip>
+    </Image>
+
+</maps:MapObjectView>

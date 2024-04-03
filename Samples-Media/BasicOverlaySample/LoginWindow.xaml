@@ -1,0 +1,25 @@
+﻿<Window x:Class="BasicOverlaySample.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterOwner"
+        Title="LoginWindow" Width="300" SizeToContent="Height" DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Directory:" HorizontalAlignment="Right" Margin="2"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Directory}" Margin="2"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="User:" HorizontalAlignment="Right" Margin="2"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Username}" Margin="2"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Password:" HorizontalAlignment="Right" Margin="2"/>
+        <PasswordBox Grid.Row="2" Grid.Column="1" Name="passwordBox" Margin="2" IsEnabled="True"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="Login" Grid.ColumnSpan="2" Click="OnLoginClicked"/>
+    </Grid>
+</Window>

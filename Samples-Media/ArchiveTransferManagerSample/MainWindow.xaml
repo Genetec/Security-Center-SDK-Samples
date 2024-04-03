@@ -1,0 +1,52 @@
+﻿<Window x:Class="ArchiveTransferManagerSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArchiveTransferManagerSample"
+        xmlns:transferGroupControl="clr-namespace:ArchiveTransferManagerSample.Controls.TransferGroupControl"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="650">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="118*"/>
+            <RowDefinition Height="117*"/>
+        </Grid.RowDefinitions>
+        <TabControl HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.RowSpan="2" Width="Auto">
+            <TabItem Header="Existing Backup Tasks">
+                <transferGroupControl:TransferGroupsListControl DataContext="{Binding TransferGroupsList}"/>
+            </TabItem>
+
+            <TabItem Header="Create Manual Backup">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <local:ManualTransferGroupControl DataContext="{Binding ManualTransferGroup}" Grid.ColumnSpan="2"  />
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Restore Camera">
+                <Grid Background="#FFE5E5E5" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="76*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="553*"/>
+                    </Grid.ColumnDefinitions>
+                    <transferGroupControl:CameraRestoreControl DataContext="{Binding CameraRestore}" Grid.ColumnSpan="3"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Create Manual Duplicate Archive">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <local:DuplicateArchiveControl DataContext="{Binding DuplicateArchive}" Grid.ColumnSpan="4"  />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

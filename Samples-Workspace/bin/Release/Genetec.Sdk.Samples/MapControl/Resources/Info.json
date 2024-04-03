@@ -1,0 +1,13 @@
+{
+  "Name": "MapControl",
+  "Module": "MapControl.dll",
+  "Category": "Maps",
+  "Description": "This samples demonstrates how to instantiate a Security Center's map control.",
+  "Requirements":[ "No requirements needed for this sample." ],
+  "Instructions":[ "Running security center shows the custom maps that were created." ],
+  "Result": "Custom map present as part of Security Center Tasks.",
+  "Title": "Map control",
+  "Arguments": "/tasks {FEB576B6-3B90-4458-8FC7-E1644C12C70B}",
+  "SecurityCenter": true,
+  "ConfigTool":false
+}

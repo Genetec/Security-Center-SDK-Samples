@@ -1,0 +1,11 @@
+{
+  "Name": "ImageExtractor",
+  "Module": "ImageExtractor.dll",
+  "Description": "This sample applies image extraction on the cardholder image and  embeds a custom watermark on it.",
+  "Requirements":[ "No requirements needed for this sample." ],
+  "Instructions":[ "Go to Cardholder Management." , "Click new to create a new cardholder.", "Click on the blank picture on the top left and select Genetec ImageExtractor.", "Select a picture from your device and click Open.", "Clicking the picture shows the watermark on the bottom right." ],
+  "Result": "Cardholder picture is embedded with watermark.",
+  "Title": "Image Extractor",
+  "SecurityCenter": true,
+  "ConfigTool":false
+}

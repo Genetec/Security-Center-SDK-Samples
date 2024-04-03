@@ -1,0 +1,12 @@
+{
+  "Name": "TrafficAnalysis",
+  "Module": "TrafficAnalysis.dll",
+  "Category": "Tiles",
+  "Description": "This samples demonstrates how to overlay client-side analytics over the video.",
+  "Requirements":[ "Must have a camera." ],
+  "Instructions":[ "Open Monitoring." , "Add a camera to one of the tiles." ],
+  "Result": "Analytics appear as an overlay over the video feed.",
+  "Title": "Traffic Analysis",
+  "SecurityCenter": true,
+  "ConfigTool":false
+}

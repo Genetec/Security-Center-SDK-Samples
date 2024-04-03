@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="OfficerMapObject.Panels.OfficerMapPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" x:Name="ctl" KeyDown="OnKeyDown" Loaded="OnViewLoaded"
+             d:DesignHeight="30" d:DesignWidth="350">
+    <DockPanel>
+        <DockPanel Dock="Top" Margin="5">
+            <WrapPanel HorizontalAlignment="Left">
+                <Button Content="Delete Earliest Officer" Click="DeleteEarliest" Margin="0,0,4,0"/>
+                <Button Content="Delete Latest Officer" Click="DeleteLatest" Margin="0,0,4,0"/>
+                <Button Content="Delete All Officers" Click="DeleteAll"/>
+            </WrapPanel>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

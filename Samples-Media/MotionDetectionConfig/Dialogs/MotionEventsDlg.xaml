@@ -1,0 +1,63 @@
+﻿<Window x:Class="MotionDetectionConfig.Dialogs.MotionEventsDlg"
+        x:Name="ctl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Title="H264 advanced motion detection settings">
+
+  <Grid Margin="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <TextBlock Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Text="Motion on event:"/>
+
+    <ComboBox x:Name="m_cbMotionOnEvent"
+              Grid.Row="0" Grid.Column="1"
+              Width="200"
+              HorizontalAlignment="Left" VerticalAlignment="Center"
+              Margin="8,0,0,0"
+              ItemsSource="{Binding ElementName=ctl, Path=MotionEvents}"
+              DisplayMemberPath="EventName"
+              SelectionChanged="OnComboBoxMotionOnEventSelectionChanged"/>
+
+    <TextBlock Grid.Row="1" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Margin="0,10,0,0"
+               Text="Motion off event:"/>
+
+    <ComboBox x:Name="m_cbMotionOffEvent"
+              Grid.Row="1" Grid.Column="1"
+              Width="200"
+              HorizontalAlignment="Left" VerticalAlignment="Center"
+              Margin="8,10,0,0"
+              ItemsSource="{Binding ElementName=ctl, Path=MotionEvents}"
+              DisplayMemberPath="EventName"
+              SelectionChanged="OnComboBoxMotionOffEventSelectionChanged"/>
+
+    <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                HorizontalAlignment="Right"
+                Margin="0,12,0,0"
+                Orientation="Horizontal">
+
+      <Button Width="68"
+              Content="Cancel"
+              IsCancel="True"/>
+
+      <Button Width="68"
+              Margin="12,0,0,0"
+              Content="Ok"
+              IsDefault="True"
+              Click="OnButtonOkClicked"/>
+    </StackPanel>
+  </Grid>
+</Window>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="ArchiveTransferManagerSample.Controls.AddSourceDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AddSourceDialog" Height="250" Width="300" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <ListBox ItemsSource="{Binding PotentialSources}" SelectedItem="{Binding SelectedSource}" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding EntityIcon}" Margin="2" />
+                        <TextBlock Text="{Binding EntityName}" Margin="2" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Right" Margin="5,15,5,5">
+            <Button IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" MinWidth="60" Margin="0,0,10,0">_Ok</Button>
+            <Button IsCancel="True" MinWidth="60">_Cancel</Button>
+        </WrapPanel>
+    </Grid>
+</Window>

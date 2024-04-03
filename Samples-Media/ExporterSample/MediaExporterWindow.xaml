@@ -1,0 +1,146 @@
+﻿<Window
+  x:Class="MediaExporterSample.MediaExporterWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:converters="clr-namespace:MediaExporterSample.Converters"
+  Title="Genetec SDK MediaExporter sample" Height="746.667" Width="850" Background="White" MinWidth="850">
+  <Window.Resources>
+    <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+  </Window.Resources>
+  <StackPanel Background="White">
+    <GroupBox Header="Directory Information" Name="m_directoryInfo" Background="White" BorderBrush="#FFC3C8CB"
+              IsEnabled="{Binding Path=IsSdkEngineConnected, Converter={StaticResource InverseBooleanConverter}}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <!-- ROW 0-->
+        <Label Grid.Column="0" Grid.Row="0" Content="Directory:" HorizontalAlignment="Right" />
+        <TextBox Name="m_directory" Grid.Column="1" Grid.Row="0" Text="" />
+        <!-- ROW 1-->
+        <Label Grid.Column="0" Grid.Row="1" Content="User Name:" HorizontalAlignment="Right" />
+        <TextBox Name="m_userName" Grid.Column="1" Grid.Row="1" Text="Admin" />
+        <!-- ROW 2-->
+        <Label Grid.Column="0" Grid.Row="2" Content="Password:" HorizontalAlignment="Right" />
+        <PasswordBox Name="m_password" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" Margin="4" />
+        <!-- ROW 3-->
+        <WrapPanel Name="m_actionWrapPanel" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center">
+          <Button Name="m_connect" Content="Connect" Click="OnButtonConnectClick" />
+        </WrapPanel>
+      </Grid>
+    </GroupBox>
+    <GroupBox Header="Export Information" x:Name="m_exportInfo" Background="White" BorderBrush="#FFC3C8CB">
+      <GroupBox.Style>
+        <Style>
+          <Setter Property="GroupBox.IsEnabled" Value="False"/>
+          <Style.Triggers>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding Path=IsSdkEngineConnected}" Value="true"/>
+                <Condition Binding="{Binding Path=IsExportingInProgress}" Value="False"/>
+              </MultiDataTrigger.Conditions>
+              <Setter Property="GroupBox.IsEnabled" Value ="True"/>
+            </MultiDataTrigger>
+          </Style.Triggers>
+        </Style>
+      </GroupBox.Style>
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!-- ROW 0-->
+        <Label Grid.Column="0" Grid.Row="0" Content="Camera Guid:" HorizontalAlignment="Right" />
+        <ComboBox Grid.Column="1" Grid.Row="0" Name="m_cameraGuids" Margin="4" ItemsSource="{Binding Path=CameraItems}" SelectedIndex="{Binding Path=CameraSelectedIndex}" />
+
+        <!-- ROW 1-->
+        <Label Grid.Column="0"  Grid.Row="1" Content="Select export location:" HorizontalAlignment="Right" Height="25.96" VerticalAlignment="Top" Width="123.103" />
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+          <TextBox x:Name="m_target" Text="{Binding Path=TargetExportFolder}" Height="26" Width="354" />
+          <Button x:Name="m_browse" Content="Browse" Width="58" RenderTransformOrigin="2.179,0.373" Margin="0,4" Click="OnButtonBrowseClick" />
+        </StackPanel>
+
+        <!-- ROW 2-->
+        <Label Grid.Column="0" Grid.Row="2" Content="Select start time:" HorizontalAlignment="Right" />
+        <TextBox Name="m_startTime" Grid.Column="1" Grid.Row="2" />
+
+        <!-- ROW 3-->
+        <Label Grid.Column="0" Grid.Row="3" Content="Select end time:" HorizontalAlignment="Right" />
+        <TextBox Name="m_endTime" Grid.Column="1" Grid.Row="3" />
+
+        <!-- ROW 4-->
+        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
+          <CheckBox Name="m_watermark" IsChecked="False" VerticalAlignment="Center">Include Digital Signature</CheckBox>
+          <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+          <CheckBox Name="m_hasOverlay" IsChecked="False" VerticalAlignment="Center">Overlay</CheckBox>
+          <TextBox x:Name="m_textOverlay" Text="overlay" Height="26" Width="113" />
+          <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+          <CheckBox Name="m_canReExport" IsChecked="False" VerticalAlignment="Center">Can ReExport</CheckBox>
+          <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+          <CheckBox Name="m_exportOriginalVideo" IsChecked="False" VerticalAlignment="Center">Remove Privacy Protection</CheckBox>
+        </StackPanel>
+
+        <!-- ROW 5-->
+        <Button Grid.Column="1" Height="50" Margin="4,4,4,4" Grid.Row="5" Name="m_Export" Content="Export to G64" Click="OnButtonExportClicked" />
+        <Button Grid.Column="1" Height="50" Margin="4,4,4,4" Grid.Row="6" Name="m_ExportToG64X" Content="Export to G64X" Click="OnButtonExportToG64XClicked" />
+      </Grid>
+    </GroupBox>
+    <GroupBox Header="Export Status" Name="m_statisticsGroupBox" Background="White" BorderBrush="#FFC3C8CB">
+      <GroupBox.Style>
+        <Style>
+          <Setter Property="GroupBox.IsEnabled" Value="False"/>
+          <Style.Triggers>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding Path=IsSdkEngineConnected}" Value="True"/>
+                <Condition Binding="{Binding Path=IsExportingInProgress}" Value="True"/>
+              </MultiDataTrigger.Conditions>
+              <Setter Property="GroupBox.IsEnabled" Value="True"/>
+            </MultiDataTrigger>
+          </Style.Triggers>
+        </Style>
+      </GroupBox.Style>
+      <StackPanel Background="White">
+        <Label Content="Progress" />
+        <ProgressBar Name="m_progressBar" HorizontalContentAlignment="Stretch" Height="35" Value="{Binding Path=ProgressPercent}" />
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="307*" />
+            <ColumnDefinition Width="141*"/>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+          </Grid.RowDefinitions>
+          <Label Content="Bit Rate:" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="2" Margin="0,4,4,4" />
+          <Label Name="m_bitRate" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3" Content="{Binding Path=BitRateContent}" Margin="4,4,0,4" />
+          <Label Content="Frame Rate:" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2" Margin="0,4,4,4" />
+          <Label Name="m_frameRate" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3"  Content="{Binding Path=FrameRateContent}" Margin="4,4,0,4"/>
+          <Label Content="Bytes Transfered:" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2" Margin="0,4,4,4" />
+          <Label Name="m_bytesTransfered" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" Content="{Binding Path=BytesTransferedContent}" Margin="4,4,0,4"/>
+        </Grid>
+        <Button Name="m_cancel" Width="50" Height="25" Content="Cancel" Click="OnButtonCancelClicked" />
+      </StackPanel>
+    </GroupBox>
+  </StackPanel>
+</Window>

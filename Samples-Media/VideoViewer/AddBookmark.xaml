@@ -1,0 +1,20 @@
+<Window x:Class="VideoViewer.AddBookmark"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:VideoViewer"
+        mc:Ignorable="d"
+        Title="Add Bookmark" Height="120" Width="450">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="4">
+                <Label Content="Bookmark message" Margin="2" />
+                <TextBox Name="textboxBookmark" Text="My Bookmark!" Width="300" Margin="2" VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="4">
+                <Button Content="Add Bookmark" Margin="4" Width="150" Click="ButtonAddBookmark_OnClick"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

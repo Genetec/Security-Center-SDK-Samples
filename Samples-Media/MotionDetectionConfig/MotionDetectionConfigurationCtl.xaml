@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="MotionDetectionConfig.MotionDetectionConfigurationCtl"
+             x:Name="ctl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Sdk="clr-namespace:Genetec.Sdk;assembly=Genetec.Sdk"
+             xmlns:converters="clr-namespace:MotionDetectionConfig.Converters">
+
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    <converters:EnumMatchToBooleanConverter x:Key="EnumMatchToBooleanConverter"/>
+    <converters:IsNullToBooleanConverter x:Key="IsNotNullToBooleanConverter" IsInverted="True"/>
+    <converters:MinimumCountToBooleanConverter x:Key="MinimumCountToBooleanConverter"/>
+    <converters:IsSmallerThanMultiValueConverter x:Key="IsSmallerThanMultiValueConverter"/>
+    <System:Int32 x:Key="MinimumZoneCount">1</System:Int32>
+  </UserControl.Resources>
+
+  <Grid Margin="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <TextBlock Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Text="Motion detection enabled:"/>
+
+    <CheckBox Grid.Row="0" Grid.Column="1"
+              HorizontalAlignment="Left" VerticalAlignment="Center"
+              Margin="8,0,0,0"
+              IsChecked="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Mode=TwoWay}"/>
+
+    <TextBlock Grid.Row="1" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Top"
+               Margin="0,10,0,0"
+               Visibility="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+               Text="Detection is done on the:"/>
+
+    <StackPanel Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="8,10,0,0"
+                Visibility="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Orientation="Vertical">
+
+      <RadioButton x:Name="m_rbSoftware"
+                   IsEnabled="{Binding ElementName=ctl, Path=IsSoftwareDetectionSupported}"
+                   IsChecked="{Binding ElementName=ctl, Path=MotionDetectionType, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter={x:Static Sdk:MotionDetectionType.Archiver}, Mode=TwoWay}"
+                   Content="Archiver"/>
+
+      <RadioButton x:Name="m_rbHardware"
+                   Margin="0,6,0,0"
+                   IsEnabled="{Binding ElementName=ctl, Path=IsHardwareDetectionSupported}"
+                   IsChecked="{Binding ElementName=ctl, Path=MotionDetectionType, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter={x:Static Sdk:MotionDetectionType.Unit}, Mode=TwoWay}"
+                   Content="Unit"/>
+    </StackPanel>
+
+    <TextBlock Grid.Row="2" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Margin="0,10,0,0"
+               Visibility="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+               IsEnabled="{Binding ElementName=ctl, Path=IsSensitivitySupported}"
+               Text="Sensitivity:"/>
+
+    <StackPanel Grid.Row="2" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="8,10,0,0"
+                Visibility="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                IsEnabled="{Binding ElementName=ctl, Path=IsSensitivitySupported}"
+                Orientation="Horizontal">
+
+      <TextBox Width="50"
+               VerticalAlignment="Center"
+               Text="{Binding ElementName=ctl, Path=Sensitivity, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+
+      <TextBlock VerticalAlignment="Center"
+                 Margin="4,0,0,0"
+                 Text="(0 - 100)"/>
+
+      <Button Width="120"
+              VerticalAlignment="Center"
+              Margin="12,0,0,0"
+              Visibility="{Binding ElementName=ctl, Path=IsH264, Converter={StaticResource BooleanToVisibilityConverter}}"
+              Content="H264 settings..."
+              Click="OnButtonH264SettingsClicked"/>
+    </StackPanel>
+
+    <TextBlock Grid.Row="3" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Center"
+               Margin="0,10,0,0"
+               Visibility="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+               IsEnabled="{Binding ElementName=ctl, Path=IsConsecutiveFrameHitsSupported}"
+               Text="Consecutive frame hits:"/>
+
+    <StackPanel Grid.Row="3" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="8,10,0,0"
+                Visibility="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                IsEnabled="{Binding ElementName=ctl, Path=IsConsecutiveFrameHitsSupported}"
+                Orientation="Horizontal">
+
+      <TextBox Width="50"
+               VerticalAlignment="Center"
+               Text="{Binding ElementName=ctl, Path=ConsecutiveFrameHits, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+
+      <TextBlock VerticalAlignment="Center"
+                 Margin="4,0,0,0"
+                 Text="(1 - 127)"/>
+    </StackPanel>
+
+    <TabControl x:Name="m_tabControl"
+                Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                Margin="0,10,0,0"
+                Visibility="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                SelectionChanged="OnTabControlSelectionChanged"/>
+
+    <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                HorizontalAlignment="Left"
+                Margin="0,10,0,0"
+                Visibility="{Binding ElementName=ctl, Path=IsMotionDetectionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Orientation="Horizontal">
+
+      <Button Width="120"
+              Content="Add motion zone"
+              Click="OnButtonAddMotionZoneClicked">
+        <Button.IsEnabled>
+          <MultiBinding Converter="{StaticResource IsSmallerThanMultiValueConverter}">
+            <Binding ElementName="m_tabControl" Path="Items.Count"/>
+            <Binding ElementName="ctl" Path="MaxZoneCountSupported"/>
+          </MultiBinding>
+        </Button.IsEnabled>
+      </Button>
+
+      <Button Width="120"
+              Margin="12,0,0,0"
+              Content="Remove motion zone"
+              Click="OnButtonRemoveMotionZoneClicked">
+        <Button.Style>
+          <Style>
+            <Setter Property="Button.IsEnabled" Value="False"/>
+            <Style.Triggers>
+              <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                  <Condition Binding="{Binding ElementName=ctl,  Path=SelectedZoneConfigurationCtl, Converter={StaticResource IsNotNullToBooleanConverter}}" Value="true"/>
+                  <Condition Binding="{Binding ElementName=ctl, Path=TotalTabs, Converter={StaticResource MinimumCountToBooleanConverter}, ConverterParameter={StaticResource MinimumZoneCount}}" Value="true"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Button.IsEnabled" Value="true"/>
+              </MultiDataTrigger>
+            </Style.Triggers>
+          </Style>
+        </Button.Style>
+      </Button>
+    </StackPanel>
+  </Grid>
+</UserControl>

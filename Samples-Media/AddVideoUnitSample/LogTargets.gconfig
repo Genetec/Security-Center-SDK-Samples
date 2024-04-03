@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+This file is used to troubleshoot SDK application video issues.
+Place this file in the application execution folder.
+Traces are output in a Logs subfolder.
+SDK samples demonstrating the Media Player and VideoSourceFilter have this file in their project, 
+  by default, the file is not copied to the output folder.  To enable logs in these projects,
+  change their LogTargets.gconfig file "Copy to output directory" property to "Copy if newer".
+
+-->
+<configuration>
+  <logTargets>
+    <!-- Log file-->
+    <logTarget type="Genetec.Diagnostics.Logging.Targets.LogFileTarget, Genetec">
+      <settings>
+        <add Key="prefix" Value="Trace_"/>
+        <add Key="deleteOlderThanNDays" Value="2"/>
+        <add Key="logMaxLine" Value="50000"/>
+        <add Key="logFolder" Value="Logs"/>
+      </settings>
+      <traces>
+        <add loggerName="root" severity="Warning|Error|Fatal"/>
+        <add loggerName="Genetec.Media" severity="All|Performance|Debug"/>
+        <add loggerName="Genetec.Sdk.Media" severity="All|Performance|Debug"/>
+        <add loggerName="Genetec.VideoSurveillance.Common.MediaPlayerInitialization" severity="All|Performance|Debug"/>
+      </traces>
+    </logTarget>
+  </logTargets>
+</configuration>

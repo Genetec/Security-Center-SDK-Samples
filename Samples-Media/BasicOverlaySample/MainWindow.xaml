@@ -1,0 +1,60 @@
+﻿<Window x:Class="BasicOverlaySample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BasicOverlaySample"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:MainWindow}"
+        Title="MainWindow" Height="547" Width="926" Loaded="OnWindow_Loaded">
+  <Grid Margin="0,0,2,0">
+    <ContentControl x:Name="m_mediaPlayerContainer" Margin="10,10,282,0" Content="m_mediaplayer" />
+    <Label x:Name="label" Content="Select a camera" HorizontalAlignment="Right" Margin="0,0,157,0" VerticalAlignment="Top" Height="26" Width="93" />
+    <GroupBox x:Name="groupBox" Header="Overlay" HorizontalAlignment="Right" Margin="0,52,10,0" Width="240" VerticalAlignment="Top">
+      <Grid Margin="10,0">
+        <StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <Label Content="Text" Width="80" />
+            <Button Content="Draw" Width="58" Margin="2" Click="OnButtonDrawTextClick" />
+            <Button Content="Clear" Width="58" Margin="2" Click="OnButtonClearTextClick" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <Label Content="Image" Width="80" />
+            <Button Content="Draw" Width="58" Margin="2" Click="OnButtonDrawImageClick" />
+            <Button Content="Clear" Width="58" Margin="2" Click="OnButtonClearImageClick" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <Label Content="Ellipse" Width="80" />
+            <Button Content="Draw" Width="58" Margin="2" Click="OnButtonDrawEllipseClick" />
+            <Button Content="Clear" Width="58" Margin="2" Click="OnButtonClearEllipseClick" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <Label Content="Rectangle" Width="80" />
+            <Button Content="Draw" Width="58" Margin="2" Click="OnButtonDrawRectangleClick" />
+            <Button Content="Clear" Width="58" Margin="2" Click="OnButtonClearRectangleClick" />
+          </StackPanel>
+
+          <WrapPanel>
+            <Button Content="Clear All Layers" Padding="2" Margin="2" Click="OnButtonClearAllClick" />
+            <Button Content="Destroy Overlays" Padding="2" Margin="2" Click="OnDestroyOverlaysClick" ToolTip="Destroy (remove stream and deleted files) all overlays on this camera.&#x0a;Need to Restart Overlay before using overlay again..&#x0a;The overlay will not be stable for 10-15 seconds." />
+            <Button Content="Restart Overlay" Padding="2" Margin="2" Click="OnButtonRestartOverlayClick" />
+            <Button Content="Batch Destroy" Padding="2" Margin="2" Click="OnBatchDestroyOverlaysClick" ToolTip="Batch Destroy (remove stream and deleted files) all overlays on all camera.&#xA;Need to Restart Overlay before using overlay again..&#xA;The overlay will not be stable for 10-15 seconds." />
+          </WrapPanel>
+        </StackPanel>
+      </Grid>
+
+    </GroupBox>
+    <local:Benchmarking x:Name="m_benchmarking" HorizontalAlignment="Right" Margin="0,254,10,0" VerticalAlignment="Top" Height="245" StartButtonClicked="OnBenchmarking_StartButtonClicked" StopButtonClicked="OnBenchmarking_StopButtonClicked" />
+    <ComboBox x:Name="comboBox" HorizontalAlignment="Right" Margin="0,25,10,0" VerticalAlignment="Top" Width="240" SelectedItem="{Binding SelectedCamera}" ItemsSource="{Binding Cameras}">
+      <ComboBox.ItemTemplate>
+        <DataTemplate>
+          <StackPanel Orientation="Horizontal">
+            <Image Height="16" Width="16" Margin="2" Source="{Binding CameraIcon}" />
+            <TextBlock Margin="2" Text="{Binding CameraName}" />
+          </StackPanel>
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+
+  </Grid>
+</Window>

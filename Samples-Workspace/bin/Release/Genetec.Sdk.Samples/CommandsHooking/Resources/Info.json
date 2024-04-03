@@ -1,0 +1,11 @@
+{
+  "Name": "CommandsHooking",
+  "Module": "CommandsHooking.dll",
+  "Description": "This sample demonstrate how to hook on Security Center's commands. Precisely, it shows how to hook on the AckAlarm command to get the selected alarms in the UI.",
+  "Requirements":[ "Must have an alarm created in ConfigTool.", "Make sure to add a recipient for the alarm.", "Set e.Cancel to true in CommandModule.cs to manage the calls yourself, set to false to have the regular acknowledgment behaviour." ],
+  "Instructions":[ "Start from Alarm Monitoring." , "If e.Cancel is set to false; trigger an alarm in SecurityDesk and click Acknowledge, the alarm alert will be dismissed.", "If e.Cancel is set to true; acknowledging the alert does not dismiss it and a popup message will appear." ],
+  "Result": "Alarm acknowledgment should be hooked to any procedure that was entered if e.Cancel is set to True, otherwise, it should be acknowledged normally.",
+  "Title": "Commands Hooking",
+  "SecurityCenter": true,
+  "ConfigTool":false
+}

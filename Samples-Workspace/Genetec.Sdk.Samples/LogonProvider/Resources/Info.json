@@ -1,0 +1,11 @@
+{
+  "Name": "LogonProvider",
+  "Module": "LogonProvider.dll",
+  "Description": "This samples demonstrates how to customize the logon operation in Security Center using a LogonProvider component.",
+  "Requirements":[ "No requirements needed for this sample." ],
+  "Instructions":[ "Logon using gesture should be the initial prompt when starting Security Center." , "To login as admin, draw a circle." ],
+  "Result": "Access should be granted and security center tasks are loaded.",
+  "Title": "Logon provider",
+  "SecurityCenter": true,
+  "ConfigTool":false
+}

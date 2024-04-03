@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <logTargets type="Genetec.Diagnostics.Logging.Targets.Core.LogTargetConfigs, Genetec">
+    <logTarget type="Genetec.Diagnostics.Logging.Targets.DebugTarget, Genetec">
+      <traces>
+        <add loggerName="root" severity="All"/>
+      </traces>
+    </logTarget>
+  </logTargets>
+</configuration>

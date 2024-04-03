@@ -1,0 +1,39 @@
+﻿<incident:IncidentView x:Class="CaseManagement.Views.CaseIncidentView"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:incident="clr-namespace:Genetec.Sdk.Workspace.Components.Incident;assembly=Genetec.Sdk.Workspace">
+
+  <Grid>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Label Grid.Row="0"
+           Content="Drawing"
+           Style="{StaticResource LabelIntro}" />
+
+    <InkCanvas x:Name="m_inkCanvas"
+               Grid.Row="1" Margin="0,4,0,0"
+               StrokeCollected="OnInkCanvasStrokeCollected" />
+
+    <Label Grid.Row="2" Margin="0,8,0,0"
+           Content="Comment 1"
+           Style="{StaticResource LabelIntro}" />
+
+    <TextBox x:Name="m_tbComment1"
+             Grid.Row="3" Margin="0,4,0,0" />
+
+    <Label Grid.Row="4" Margin="0,8,0,0"
+           Content="Comment 2"
+           Style="{StaticResource LabelIntro}" />
+
+    <TextBox x:Name="m_tbComment2"
+             Grid.Row="5" Margin="0,4,0,0" />
+  </Grid>
+</incident:IncidentView>

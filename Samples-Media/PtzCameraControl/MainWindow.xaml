@@ -1,0 +1,44 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:Media="clr-namespace:Genetec.Sdk.Media;assembly=Genetec.Sdk.Media"
+        x:Class="PtzCameraControl.MainWindow" 
+        xmlns:Converters="clr-namespace:PtzCameraControl.Converters"
+        Title="Ptz Camera Sample"  Height="836.616" Width="813.672" Closing="OnWindowClosing">
+  <Window.Resources>
+    <Converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+  </Window.Resources>
+ 
+
+  <Grid Margin="0,0,2,0">
+    <Media:MediaPlayer IsEnabled="False" Name="m_player" Margin="0,124,0,149" Background="Black" />
+    <Button Content="Login" x:Name="BtnLogin" Margin="477,38,0,0" VerticalAlignment="Top" Click="OnLoginClick" RenderTransformOrigin="-0.4,0.65" HorizontalAlignment="Left" Width="72" 
+            IsEnabled="{Binding IsSdkEngineConnected, Converter={StaticResource InverseBooleanConverter}}"/>
+    <Button Content="Logout" Visibility="Visible"  x:Name="Logout" Margin="554,37,0,0" VerticalAlignment="Top" Click="OnLogoutClick" HorizontalAlignment="Left" Width="72"
+            IsEnabled="{Binding IsSdkEngineConnected}"/>
+    <Label Content="Ptz Cameras" Margin="12,96,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="81"/>
+    <ListBox x:Name="listboxMessage" Margin="0,0,0,36" Height="113" VerticalAlignment="Bottom" ItemsSource="{Binding Path=ListboxMessageItems}"/>
+    <ComboBox x:Name="comboboxCameras"  Margin="113,97,1,0" VerticalAlignment="Top" SelectionChanged="OnCamerasSelectionChanged" IsEnabled="{Binding IsSdkEngineConnected}" ItemsSource="{Binding Path=CamerasItems}" SelectedIndex="{Binding Path=CamerasSelectedIndex}" />
+    <GroupBox Header="" x:Name="GroupBoxCameraControls" IsEnabled="{Binding IsPtzCameraSelected}" Margin="0,150,46,0" VerticalAlignment="Top" Height="132" HorizontalAlignment="Right" Width="256" BorderThickness="0">
+      <Grid Margin="-15,-24,-12,-12">
+        <TextBlock Text="{Binding PtzLockedMessage}" ToolTip="{Binding PtzLockedMessage}" VerticalAlignment="Top" Height="23" HorizontalAlignment="Center" Background="White" TextTrimming="CharacterEllipsis"/>
+        <Button Content="Up" x:Name="BtnUp" HorizontalAlignment="Center" Margin="0,34,0,0" VerticalAlignment="Top" Width="50" PreviewMouseLeftButtonUp="OnBtnStopMouseUp" PreviewMouseLeftButtonDown="OnBtnUpMouseDown"/>
+        <Button Content="Down" x:Name="BtnDown" HorizontalAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Width="50" PreviewMouseLeftButtonUp="OnBtnStopMouseUp" PreviewMouseLeftButtonDown="OnBtnDownMouseDown"/>
+        <Button Content="Left" x:Name="BtnLeft" HorizontalAlignment="Left" Margin="60,73,0,0" VerticalAlignment="Top" Width="50" PreviewMouseLeftButtonUp="OnBtnStopMouseUp" PreviewMouseLeftButtonDown="OnBtnLeftMouseDown"/>
+        <Button Content="Right" x:Name="BtnRight" HorizontalAlignment="Left" Margin="160,73,0,0" VerticalAlignment="Top" Width="50" PreviewMouseLeftButtonDown="OnBtnRightMouseDown" PreviewMouseLeftButtonUp="OnBtnStopMouseUp"/>
+        <Button Content="+" x:Name="ZoomIn" HorizontalAlignment="Center" Margin="0,59,0,0" VerticalAlignment="Top" Width="30" PreviewMouseLeftButtonDown="OnBtnZoomInMouseDown" PreviewMouseLeftButtonUp="OnBtnStopMouseUp"/>
+        <Button Content="-" x:Name="ZoomOut" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Width="30" PreviewMouseLeftButtonDown="OnBtnZoomOutMouseDown" PreviewMouseLeftButtonUp="OnBtnStopMouseUp"/>
+      </Grid>
+    </GroupBox>
+    <TextBox HorizontalAlignment="Left" x:Name="textBoxServer" Height="23" Margin="12,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="153" ToolTip="Enter the server name or ip address"/>
+    <TextBox HorizontalAlignment="Left" x:Name="textBoxUsername" Height="23" Margin="170,38,0,0" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Top" Width="155" ToolTip="Enter your username"
+             IsEnabled="{Binding IsSdkEngineConnected, Converter={StaticResource InverseBooleanConverter}}"/>
+    <PasswordBox HorizontalAlignment="Left" x:Name="passwordBoxPassword"  Margin="330,38,0,0" VerticalAlignment="Top" Width="142" Height="23" ToolTip="Enter your password"
+                 IsEnabled="{Binding IsSdkEngineConnected, Converter={StaticResource InverseBooleanConverter}}"/>
+    <Label Content="Server" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Width="154"/>
+    <Label Content="Username" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="210"/>
+    <Label Content="Password" HorizontalAlignment="Left" Margin="330,10,0,0" VerticalAlignment="Top" Width="142" />
+    <StatusBar Height="36" VerticalAlignment="Bottom" Grid.Row="1" Grid.RowSpan="2">
+      <Label x:Name="statusMessage" Content="" Width="624"/>
+    </StatusBar>
+  </Grid>
+</Window>
