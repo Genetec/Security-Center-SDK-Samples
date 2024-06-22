@@ -1,5 +1,5 @@
 ﻿<ClientCertificate>
-    <CompanyName>Genetec</CompanyName>
-    <ApplicationName>Unlimited</ApplicationName>
-    <ApplicationId>7krimbqIowoi6O5YOKxS6mJzs2SF9e+r3k4gaeYcQpRpXHbiy98JpL/2wjcSfpse</ApplicationId>
+	<CompanyName>Genetec</CompanyName>
+	<ApplicationName>Demo Certificate for SDK Development only</ApplicationName>
+	<ApplicationId>KxsD11z743Hf5Gq9mv3+5ekxzemlCiUXkTFY5ba1NOGcLCmGstt2n0zYE9NsNimv</ApplicationId>
 </ClientCertificate>
